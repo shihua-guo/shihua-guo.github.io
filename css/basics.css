@@ -1,0 +1,163 @@
+@charset "utf-8";
+/* CSS Document */
+
+.content-menu-right-basics-head{
+  float: left;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #bfbfbf;
+}
+.acc-infor{
+	width: 100%;
+	height: 250px;
+	float: left;
+	margin-top: 15px;
+	color: #bcbcbc;
+	//background: yellow;
+}
+.infor-head{
+	width: 200px;
+	height: 45px;
+}
+.infor-head h3{
+	font-weight: normal;
+  color: #6b6b6b;
+}
+.infor-head img{
+	margin-right: 15px; 
+	float: left;
+}
+.acc-infor span{
+	display:block;
+	width: 500;
+	height: 50px;
+}
+#nickname{
+	float: left;
+	width: 70px;
+}
+.trophy{
+	float: left;
+	margin-top: 5px;
+}
+.infor-credit{
+	width: 250px;
+	margin-left: 95px;
+	padding-top: 2px;
+}
+
+.infor-p1, .infor-p2, .infor-p3{
+	width: 85px;
+	height: 20px;
+	float: left;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.infor-p3{
+	margin-top: 2px;
+}
+.credit-a{
+	margin:19px 0 0 98px;
+	font-size: 12px;
+	text-decoration:none;
+	color: #fe5459;
+}
+
+.container {
+  width: 380px;
+	margin-top: 12px;
+  text-align: center;
+}
+.container .progress {
+  margin: 0 auto;
+  width: 180px;
+  height: 20px;
+}
+
+.progress {
+  background: #bdbdbd;
+  border-radius: 6px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+  position: relative;
+  height: 20px;
+  border-radius: 4px;
+  -webkit-transition: 0.4s linear;
+  -moz-transition: 0.4s linear;
+  -o-transition: 0.4s linear;
+  transition: 0.4s linear;
+  -webkit-transition-property: width, background-color;
+  -moz-transition-property: width, background-color;
+  -o-transition-property: width, background-color;
+  transition-property: width, background-color;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25),  rgba(255, 255, 255, 0.1);
+}
+.progress-bar {/*控制百分之5*/
+  width: 50%;
+ background-color: #f63a0f;
+}
+.container-infor{
+	font-size: 14px;
+	margin: 12px 0 0 120px;
+}
+.container-infor .grade{
+	display: inline;
+	color: #fe5459;
+}
+
+#basic{
+	width: 550px;
+}
+.basic-head{
+	float: left;
+	width: 120px;
+}
+.heng2{
+	float: left;
+	padding-top: 13px;
+	
+}
+.basics-news{
+  width: 100%;
+  float: left;
+  color: #bcbcbc;
+  margin-top: 20px;
+}
+.basics-xiugaiPhon,.basics-viugaiEmil{
+	color: #d9272c;
+	float: right;
+	margin-right: 220px;
+	font-size: 14px;
+}
+
+
+.xiugaiziliao{
+	float: right;
+	font-size: 13px;
+	margin: 3px 15px 0px 0px;
+	/*width: 100px;
+	height: 40px;
+	background-color: #d9272c;
+	
+	color: #ffffff;
+	text-align: center;
+	
+	line-height: 40px;*/
+}
+.xiugaiziliao:hover{
+	color: #f82e54;
+	font-size: 14px;
+}
+.xiugai-head{
+	width: 132px;
+	height: 128px;
+	float: right;
+	margin-right: 10px;
+	background: url(../images/basics-modification-head.png);
+}
+

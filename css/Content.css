@@ -1,0 +1,196 @@
+/** 
+	* link: Ö÷ÌåÄÚÈÝ
+	* @author: ÀµîÈ¹ð
+	* date: 2015-10-05
+*/
+#content{
+  width: 1130px;
+  height: 1945px;
+  margin: 0px auto;
+}
+.content_style{
+  width: 1130px;
+  height: 332px;
+  margin-top: 56px;
+}
+.dvConLeft {
+  width: 194px;
+  height: 332px;
+  float: left;
+}
+.dvConRight {
+  width: 936px;
+  height: 332px;
+  float: left;
+  text-align: right;
+}
+.eachFHeader{
+  width:194px!important;
+  height:75px!important;
+  padding-left: 25px;
+  color: #ffffff;
+}
+@keyframes myfirst
+{
+0%   {font-weight: 100;font-size: 16px;}
+50%  {font-weight: 300;font-size: 17px;}
+100% {font-weight: 500;font-size: 19px;}
+}
+.dvConLeft ul {
+  height: 332px;
+}
+.dvConLeft ul li {
+  width: 193px;
+  height: 42px;
+  padding-top: 15px;
+  text-align: center;
+	transition:cubic-bezier(0.17, 0.67, 0.88, 1) 0.3s;
+  background:url(../images/Content/Ct_leftLi.png);
+  background-position: -195px 0px; 
+}
+.dvConLeft ul li:hover {
+  background-color: #DEDEDE;
+  background-position: 0px 0px; 
+  //border-left:5px solid #fee;
+  //border-right:5px solid #fee;
+  //width:185px;
+}
+.dvConLeft img {
+  margin-right: 15px;
+  margin-left: 10px;
+  margin-top: -5px;   
+}
+.dvConLeft span {
+  font-weight: 100;
+  font-size: 16px;
+  margin-bottom: -5px;
+}
+.dvConLeft ul li a {
+  font-size: 13px;
+  color: #000000;
+  text-decoration:none;
+}
+.dvConLeft ul li:hover a {
+  font-weight:100;
+  color:#000;
+/*   font-size: 15px; */
+}
+.dvConRight_child {
+  width: 265px;
+  height: 326px;
+  float: left;
+  margin-left: 20px;
+  text-align: center;
+  position: relative;
+  left: 0px;
+  top:0px;
+  box-shadow: 0px 1px 10px 2px #bcbcbc;
+  cursor:pointer;
+}
+.dvConRight_childShowRight {
+  width: 70px;
+  height: 66px;
+  color: #000;
+  text-align: right;
+  font-size:12px;
+  padding-right: 10px;
+  padding-top: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 185px;
+  bottom: 0px;
+  transition:1s;
+}
+.dvConRight_childShowLeft {
+  width: 8px;
+  height: 71px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  transition:1s;
+}
+.dvConRight_childShowCeter {
+  width: 155px;
+  height: 46px;
+  color: #000;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 10px 0px 15px 30px;
+  position: absolute;
+  left: 16x;
+  bottom: 0px;
+  transition: 1s;
+  font-weight:100;
+  font-size:15px;
+}
+.dvConRight_child img {
+  width:265px;
+  height:326px;
+}
+.dvConRight_childShowCeter:hover .dvConRight_childShowLeft{
+  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0.7);
+	transition:0.5s;
+}
+.dvConRight_childShowCeter:hover .dvConRight_childShowRight{
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+	transition:0.5s;
+}
+.dvConRight_childShowCeter:hover .dvConRight_childShowRight b{
+  opacity: 1!important;
+  color: #fff;
+  transition:0s;
+}
+.dvConRight_childShowCeter p {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.dvConRight_childShowCeter b {
+  color: #86a108;
+  font-size: 22px;
+  transition:1s;
+}
+.dvConRight_childShowCeter tt {
+  font-size: 14px;
+  font-weight: 100px;
+  color:#000;
+  font-family:"microsoft yahei";
+}
+.dvConRight_childShowRight b {
+  color: #000;
+  font-size: 25px;
+}
+.dvConRight_childMore {
+  width: 35px;
+  height: 70px;
+  padding: 15px 20px 0px 0px;
+  float: right;
+  cursor:pointer;
+}
+.dvConRight_childMore span {
+  font-size: 20px;
+  text-align:center;
+  font-weight: 100;
+  color: #fff;
+}
+.dvConRight_childMore:hover span{
+  font-weight:900;
+}
+#Ct_fhDingBu {
+  width: 55px;
+  height: 53px;
+  border-radius: 50%;
+  display:none;
+  position: fixed;
+  right: 80px;
+  bottom: 80px;
+  margin-right: 5px;
+  background-image: url(../images/Content/Ct_fhDingBu.png);
+  background-position: 0px 0px;
+}
+#Ct_fhDingBu:hover {
+  background-position: 0px -53px;
+}

@@ -1,0 +1,70 @@
+/** 
+	* link: 公用
+	* @author: 李晓顺
+	* date: 2015-09-06
+    */
+.content{
+  float: left;
+  width: 100%;
+  height:900px;
+  margin-top: 4px;
+}
+.content-menu{
+  margin: 0 auto;
+  width: 800px;
+  height: 750px;
+}
+.content-menu-left{
+  width: 150px;
+  height: 700px;
+  margin-top: 41px;
+  float: left;
+}
+.hover{
+  color: #ffffff;
+  font-size: 19px;
+  background-color: #d9272c;
+	}
+.content-menu-left ul{
+   width: 150px;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  color:#aaaaaa;
+  font-size: 15px;
+  text-align: center;
+  display:  block;
+  cursor: pointer;   /*改变鼠标形状*/
+}
+.content-menu-left ul li{
+  margin: 1px 0px 1px 0px;
+}
+.account-f{
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #bfbfbf;
+}
+.logo-1{
+  width: 16px;
+  height: 18px;
+  float: left;
+  margin: 22px 14px 0px 16px;
+  background: url(../images/account-logo-p.png);
+}
+.management{
+  width: 100px;
+  height: 50px;
+  float: left;
+}
+.management h3{
+	font-weight: normal;
+  color: #6b6b6b;
+  margin-top:6px;
+}
+
+.content-menu-left li:hover{
+  background: #d9272c;
+  color: #ffffff;
+  font-size: 19px;
+}

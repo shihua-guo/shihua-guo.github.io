@@ -1,0 +1,122 @@
+/** 
+	* link: 用户登录
+	* @author: 李晓顺
+	* date: 2015-08-24
+    */
+	
+.content{
+	float: left;
+	margin-top: 16px;
+	width:100%;
+	height:589px;
+}
+.content-menu{
+	margin:0 auto;
+	width: 1310px;
+	height: 589px;
+	clear: both;/*消除浮动*/
+	background: url(../images/login-bg.png) ;
+}
+.content-right{
+	width: 411px;
+	height: 370px;
+	float: right;
+	margin: 4% 4% 10% 10%;
+	box-shadow: 3px 3px 5px #CACACA;
+}
+.content-right-top{
+	width: 411px;
+	height: 62px;
+	float: left;
+	background: #D9272C;
+}
+.content-right-top h2{
+	color:#fff;
+	margin: 16 0 0 10;
+	font-weight:200;
+	
+}
+.content-right-mid-group{
+	margin-top: 36px;
+	width: 100%;
+	height: 46px;
+	float: left;
+}
+
+.content-right-mid-group input{
+	border: 1px solid rgb(204, 204, 204);
+	padding-bottom:5px;
+	line-height: 20px;
+	background-color: #ffffff;
+	padding-left: 6px;
+	width: 258px;
+	height: 47px;
+	font-size:15px;
+	transition:1.8s;
+}
+
+.content-right-mid-group input:hover{
+  box-shadow:0px 0px 3px #ccccff;
+	transition:0s;
+}
+
+.content-right-mid-group a{
+	margin-left: 10px;
+	color: cccccc;
+	font-size: 15px;
+	transition:0.7s;
+}
+.content-right-mid-group a:hover{
+	transition:0.2s;
+	color:000;
+}
+.user-logo{
+	float: left;
+	width: 52px;
+	height: 46px;
+	background: url(../images/login-peo.png); 
+}
+.lock-logo{
+	float: left;
+	width: 52px;
+	height: 46px;
+	background: url(../images/login-mima.png);
+}
+.login-btn{
+	float: left;
+	width: 129px;
+	height: 46px;
+	margin: 40 0 0 50;
+}
+
+.login-btn input{
+	border-radius: 3px;
+	width: 129px;
+	height: 46px;
+	font-size: 20px;
+	background: #D9272C;
+	color: #fff;
+	transition:0.5s;
+}
+
+.login-btn input:hover{
+	background: #b92d31;
+}
+
+.login-btn input:active{
+	background: #e85505;
+	transition:0s;
+}
+
+.remember-lock{
+	width: 150px;
+	height: 56px;
+	float: right;
+	margin: 50 20 0 0;
+}
+.remember-lock label{
+	color: #A9A8A8;
+	margin: 0 0 0 5;
+	padding: 0;
+
+}

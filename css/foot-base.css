@@ -1,0 +1,36 @@
+/** 
+	* link: 公用
+	* @author: 李晓顺
+	* date: 2015-08-24
+    */
+
+.footer{
+	width: 100%;
+	height: 150px;
+	float: left;
+	font-weight:100;
+	color:605d5d;
+}
+.foot-cont{
+	margin: 0 auto;
+	margin-top: 38px;
+	width: 438px;
+	height: 71px;
+}
+.foot-logo{
+	float: left;
+	margin: 5px 0px 0px 200px;
+	width: 24px;
+	height: 24px;
+	background: url(../images/logo-foot.png);
+}
+.foot-mid{
+	float: left;
+	font-size: 14px;
+	margin-top: 5px;
+}
+.foot-dow{
+	float: left;
+	font-size: 14px;
+	margin-left: 98px;
+}

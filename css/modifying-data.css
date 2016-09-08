@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+
+.modifying-data-head{
+  float: left;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #bfbfbf;
+}
+.modifying-data-content{
+	width: 100%;
+	height: 500px;
+	float: left;
+	margin-top: 30px;
+}
+.front_input{
+	float: left;
+	width: 80px;
+	margin: 0px 30px 0px 30px;
+	line-height: 45px;
+	text-align: right;
+}
+._input{
+	float: left;
+	width: 270px;
+	height: 45px;
+	border: 1px solid rgb(204, 204, 204);
+}
+.sex-li,.age-li,.address-li,.tishi-li,.anniu-li{
+	width: 580px;
+	height: 45px;
+	margin-top: 30px;
+	float:left;
+}
+.sex-dv{
+	float: left;
+	line-height: 45px;
+	margin-right: 20px;
+}
+.sex-dv input{
+	margin-right: 5px;
+}
+.age-li select{
+	height: 25px;
+	margin-top: 10px;
+}
+.age-year{
+	width: 73px;
+}
+.age-month{
+	width: 57px;
+}
+.age-day{
+	width: 57px;
+}
+.address-li select{
+	height: 25px;
+	margin-top: 11px;
+}
+.tishi-li{
+	margin-left:140px;
+}
+.tishi-dv{
+	float: left;
+	margin-top: 12px;
+	font-size: 13px;
+	color: #bcbcbc;
+}
+#zhanghu-dv-id{
+	color: #d9272c;
+}
+.confirmation-dv{
+	float: left;
+	height: 40px;
+	width: 110px;
+	background: #e03a3a;
+	color: #ffffff;
+	font-size:18px;
+	line-height: 40px;
+  text-align:center;
+	margin: 0px 30px 0px 130px;
+}
+.confirmation-dv:hover{
+	font-size:19px;
+	background: #f82e54;
+}
+.back{
+	float: left;
+	background: #dcdcdc;
+	height: 40px;
+	width: 70px;
+	color: #ffffff;
+	font-size:18px;
+	line-height: 40px;
+	padding-left: 30px;
+	margin: 0px 30px 0px 50px;
+}
+.back:hover{
+	font-size:19px;
+	background: #e5e2e0;
+}
+
+

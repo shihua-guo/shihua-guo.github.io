@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>账号管理|萱草</title>
+    <link   type="text/css" href="css/global-base.css"  rel="stylesheet"/>
+	<link   type="text/css" href="css/header.css"		rel="stylesheet">
+    <link   type="text/css" href="css/login-header.css" rel="stylesheet"/>
+    <link   type="text/css" href="css/login-base.css"   rel="stylesheet"/>
+    <link   type="text/css" href="css/foot-base.css"    rel="stylesheet"/>
+    <link   type="text/css" href="css/account-contents-left.css"    rel="stylesheet"/>
+    <link   type="text/css" href="css/address-administration.css"   rel="stylesheet"/>
+    <link   type="text/css" href="css/basics.css"                   rel="stylesheet" />
+    <link   type="text/css" href="css/modifying-data.css"           rel="stylesheet"/>
+    <link   type="text/css" href="css/message.css"      rel="stylesheet"/>
+    <link   type="text/css" href="css/message_comment.css"          rel="stylesheet"/>
+    <link   type="text/css" href="css/message_privateletter.css"    rel="stylesheet" />
+    <link   type="text/css" href="css/security.css"                 rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/account-management.js"></script>
+    <script type="text/javascript" src="js/account-management-age.js"></script>
+    <script type="text/javascript" src="js/a-add.js"></script>
+    <script type="text/javascript" src="js/b-add.js"></script>
+</head>
+
+<body onload="setup()">
+    <div class="all">
+		<div id="header">
+			<div id="nav">
+			<div id="logo">
+				<img src="images/nav/logo.png"height="60px"/>
+				<img src="images/nav/rnxspaimai.png"/>
+			</div>
+			<div id="nav_menu">
+				<ul>
+					<li><a href="#" class="menu_LeiBie1">首 页</a></li>
+					<li><a href="myauction.html" class="menu_LeiBie2">我的拍卖</a>
+						<ul>
+							<li><a href="#">我买到的</a></li>
+							<li><a href="#">我的收藏</a></li>
+							<li><a href="#">正在拍卖</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="menu_LeiBie3">我要拍卖</a></li>
+					<li>
+						 <a href="accout.html" class="menu_LeiBie4_1"><img src="images/nav/login-peo.png"  align="middle" >XQLSRL</a>  
+							<ul>
+								<li><a href="accout.html">账户管理</a></li>
+								<li><a href="#">退出</a></li>
+							</ul>
+					</li> 
+	<!-- 		        <div id="headerNav_land">
+						<img src="images/nav/nav-tuoxiang.png"  align="middle" >
+						<a href="#">登陆&nbsp;</a>
+						<a href="#">注册</a>
+					</div> -->
+				</ul>
+			</div>
+			<div  id="search">
+				
+				<form>
+					<input id="search_button" type="submit" name="Submit" value="搜索" >
+					<input id="search_text" type="text" autocomplete="off" >
+				</form>
+				
+			</div>
+			</div>
+		</div>
+        <div class="content">
+            <div class="content-menu">
+                <div class="content-menu-left">
+                    <div class="account-f"><div class="logo-1"></div>
+                        <div class="management"><h3>账户管理</h3></div>
+                    </div>
+                    <ul id="reftmenu0">
+                        <li class="hover" id="h">基本资料</li>
+                        <li>我的消息</li>
+                        <li>信用积分</li>
+                        <li>账户安全</li>
+                        <li>地址管理</li>                   
+                    </ul>
+                </div>
+                <div id="mecont0" class="content-menu-right">
+                    <ul class="block" style="display: block">
+						<div class="content-menu-right-head"><h3>基本资料</h3></div>
+						<div class="acc-infor">
+							<div class="infor-head"><img src="images/account/information-h1.png" /><h3>账户信息</h3></div>
+							<div class="xiugai-head"></div>
+							<span><div class="infor-p1">用户名：</div><div id="nickname">xqliss</div><img class="trophy" src="images/account/information-trophy.png" /></span>
+							<span>
+								<div class="infor-p2">信用：</div>
+								<div class="infor-credit">
+									<img src="images/account/information-leaf.png"/>
+									<img src="images/account/information-leaf.png"/>
+									<img src="images/account/information-leaf.png"/>
+									<img src="images/account/information-leaf.png"/>
+								</div>
+								<a  href="#" class="credit-a">
+									信用有什么用？
+								</a>
+							</span>
+							<span>
+								<div class="infor-p3">成长：</div>
+								<div>
+									<section class="container">
+										<div class="progress">
+											<div class="progress-bar"></div>
+										</div>
+									</section>
+								</div>
+								<div class="container-infor">还差<span class="grade" href="">12563</span>成长为<span class="grade" href="">xx</span>会员</div>
+							</span>
+						</div>
+                        
+                        <div class="content-menu-right-basics-content">
+                            <div class="basics-1">
+								
+                                <div class="basics-news">
+                                    <div class="infor-head" id="basic">
+										<div class="basic-head"><img src="images/account/information-h1.png" /><h3>基本信息</h3></div>
+										<div class="heng2">
+											<img src="images/account/information-h2.png" width="360px" height="1px" />
+											
+										</div>
+										<div class="xiugaiziliao" onclick="setTac(5)">编辑</div>
+									</div>
+                                    <div class="pwz" id="basics-name"><div class="pw">用户名：</div>xqlsrr</div></p>
+                                    <div class="pwz" id="basics-sex"><div class="pw">性别：</div>男</div>
+                                    <div class="pwz" id="basics-home"><div class="pw">生日：</div>1994年1月1日</div>
+                                    <div class="pwz" id="basics-addresss"><div class="pw">现居地：</div>广西 柳州市</div>
+                                    <div class="pwz" id="basics-phon">
+                                        <div class="pw">手机：</div>12****1234<div class="basics-xiugaiPhon" onclick="setTac(6)">修改</div>
+										<div class="pwz" id="basics-emil">
+											<div class="pw">邮箱：</div>12****1234@qq.com<div class="basics-viugaiEmil" onclick="setTac(7)">修改</div>
+										</div>
+										<div class="pwz" id="basics-rating"><div class="pw">信用等级：</div>****</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">
+                        <div class="cont-menu-right-message-head">
+                            <ul id="leftmenu0">
+                                <li class="hover1" >评论（3）</li>
+                                <li>私信（2）</li>
+                                <li>系统（1）</li>
+                                <li>未读（0）</li>
+                            </ul>
+                        </div>
+                        <div id="mcont0" class="cont-menu-right-message-down">
+                            <ul class="block" style="display: block">
+                                <div class="cont_message-comm">
+                                    <div class="acont_comment" id="acont_comment1">
+                                        <div class="cont_message-comm-caozuo">
+                                            <div class="cont_message-comm-time1">30秒前</div>
+                                            <div class="cont_message-comm-xiangqing1">查看详情></div>
+                                        </div>
+                                        <div class="message_head_portrait1"></div>
+                                        <div class="message_comment1">
+                                            <div class="message_nickname1">TEST_1</div>
+                                            <div class="message_pin1">评论了您的商品</div><div class="message_content1">诺基亚1020</div>
+                                        </div>
+                                    </div>
+                                    <div class="acont_comment" id="acont_comment2">
+                                        <div class="cont_message-comm-caozuo">
+                                            <div class="cont_message-comm-time2">30秒前</div>
+                                            <div class="cont_message-comm-xiangqing2">查看详情></div>
+                                        </div>
+                                        <div class="message_head_portrait1"></div>
+                                        <div class="message_comment1">
+                                            <div class="message_nickname2">TEST_2</div>
+                                            <div class="message_pin2">评论了您的商品</div>
+                                            <div class="message_content2">诺基亚1020</div>
+                                        </div>
+                                    </div>
+                                    <div class="acont_comment" id="acont_comment3">
+                                        <div class="cont_message-comm-caozuo">
+                                            <div class="cont_message-comm-time3">30秒前</div>
+                                            <div class="cont_message-comm-xiangqing3">查看详情></div>
+                                        </div>
+                                        <div class="message_head_portrait1"></div>
+                                        <div class="message_comment1">
+                                            <div class="message_nickname3">TEST_3</div>
+                                            <div class="message_pin3">评论了您的商品</div>
+                                            <div class="message_content3">诺基亚1020</div>
+                                        </div>
+                                    </div>
+                                    <div class="acont_comment" id="acont_comment4">
+                                        <div class="cont_message-comm-caozuo">
+                                            <div class="cont_message-comm-time4">30秒前</div>
+                                            <div class="cont_message-comm-xiangqing4">查看详情></div>
+                                        </div>
+                                        <div class="message_head_portrait1"></div>
+                                        <div class="message_comment1">
+                                            <div class="message_nickname4">TEST_4</div>
+                                            <div class="message_pin4">评论了您的商品</div>
+                                            <div class="message_content4">诺基亚1020</div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="cont_message_comm_foot">
+                                        <div class="cont_message_comm_foot_up">上一页</div>
+                                        <div class="cont_message_comm_foot_count">
+                                            <div class="cont_message_comm_foot_count1">1</div>
+                                            <div class="cont_message_comm_foot_count2">/</div>
+                                            <div class="cont_message_comm_foot_count3">5</div>
+                                        </div>
+                                        <div class="cont_message_comm_foot_down">下一页</div>
+                                    </div>
+                                </div>
+                            </ul>
+                            <ul class="block" style="display: none">
+                                <div class="cont_privateletter-comm">
+                                    <div class="acont_privateletter_comment" id="acont_privateletter_comment1">
+                                        <div class="cont_privateletter-comm-caozuo">
+                                            <div class="cont_privateletter-comm-time1">30秒前</div>
+                                            <div class="cont_privateletter-comm-not1"></div>
+                                            <div class="cont_privateletter-comm-xiangqing1">删除</div>
+                                        </div>
+                                        <div class="privateletter_head_portrait1"></div>
+                                        <div class="privateletter_comment1">
+                                            <div class="privateletter_nickname1">TEST_1</div>
+                                            <div class="privateletter_pin1">评论了您的商品</div>
+                                        </div>
+                                    </div>
+                                    <div class="acont_privateletter_comment" id="acont_privateletter_comment2">
+                                        <div class="cont_privateletter-comm-caozuo">
+                                            <div class="cont_privateletter-comm-time2">30秒前</div>
+                                            <div class="cont_privateletter-comm-xiangqing2">删除</div>
+                                        </div>
+                                        <div class="privateletter_head_portrait1"></div>
+                                        <div class="privateletter_comment1">
+                                            <div class="privateletter_nickname2">TEST_2</div>
+                                            <div class="privateletter_pin2">评论了您的商品</div>
+                                        </div>
+                                    </div>
+                                    <div class="acont_privateletter_comment" id="acont_privateletter_comment3">
+                                        <div class="cont_privateletter-comm-caozuo">
+                                            <div class="cont_privateletter-comm-time3">30秒前</div>
+                                            <div class="cont_privateletter-comm-xiangqing3">删除</div>
+                                        </div>
+                                        <div class="privateletter_head_portrait1"></div>
+                                        <div class="privateletter_comment1">
+                                            <div class="privateletter_nickname3">TEST_3</div>
+                                            <div class="privateletter_pin3">评论了您的商品评论了您的商品评论了您的商品评论了您的商品评论了您的商品评论了您的商品评论了您的商品</div>
+                                        </div>
+                                    </div>
+                                    <div class="acont_privateletter_comment" id="acont_privateletter_comment4">
+                                        <div class="cont_privateletter-comm-caozuo">
+                                            <div class="cont_privateletter-comm-time4">30秒前</div>
+                                            <div class="cont_privateletter-comm-xiangqing4">删除</div>
+                                        </div>
+                                        <div class="privateletter_head_portrait1"></div>
+                                        <div class="privateletter_comment1">
+                                            <div class="privateletter_nickname4">TEST_4</div>
+                                            <div class="privateletter_pin4">评论了您的商品</div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="cont_privateletter_comm_foot">
+                                        <div class="cont_privateletter_comm_foot_up">上一页</div>
+                                        <div class="cont_privateletter_comm_foot_count">
+                                            <div class="cont_privateletter_comm_foot_count1">1</div>
+                                            <div class="cont_privateletter_comm_foot_count2">/</div>
+                                            <div class="cont_privateletter_comm_foot_count3">5</div>
+                                        </div>
+                                        <div class="cont_privateletter_comm_foot_down">下一页</div>
+                                    </div>
+                                </div>
+                            </ul>
+                            <ul class="block" style="display: none">
+                                <div class="account_message_system">
+                                    暂时没有消息......
+                                </div>
+                            </ul>
+                            <ul class="block" style="display: none">555555555</ul>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">333333333</ul>
+                    <ul class="block" style="display: none">
+                        <div class="content-menu-right-head"><h3>账户安全</h3></div>
+                        <div class="content-menu-right-security-content">
+                            <div class="security-content" id="security-loginpass">
+                                <div class="security-png" id="loginpass-png"></div>
+                                <div class="security-content1" id="loginpass-content">
+                                    <div class="security-theme" id="loginpass-content-theme">登录密码</div>
+                                    <div class="security-cont" id="loginpass-cont">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
+                                    <div class="security-xiugai" id="loginpass-xiugai" onclick="setTac(6)">修改</div>
+                                </div>
+                            </div>
+                            <div class="security-content" id="security-bindingmailbox">
+                                <div class="security-png" id="bindingmailbox-png"></div>
+                                <div class="security-content1" id="bindingmailbox-content">
+                                    <div class="security-theme" id="bindingmailbox-content-theme">绑定邮箱</div>
+                                    <div class="security-cont" id="bindingmailbox-cont">您验证的邮箱：12******120@QQ.COM账户安全。</div>
+                                    <div class="security-xiugai" id="bindingmailbox-xiugai" onclick="setTac(7)">修改</div>
+                                </div>
+                            </div>
+                            <div class="security-content" id="security-bindingphon">
+                                <div class="security-png" id="bindingphon-png"></div>
+                                <div class="security-content1" id="bindingphon-content">
+                                    <div class="security-theme" id="bindingphon-content-theme">绑定手机</div>
+                                    <div class="security-cont" id="bindingphon-cont">您绑定的手机：123******123若已丢失或停用，请立即更换，避免账户被盗账户安全。</div>
+                                    <div class="security-xiugai" id="bindingphon-xiugai" onclick="setTac(8)">修改</div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">
+                        <div class="content-menu-right-head"><h3>地址管理</h3></div>
+                        <div class="content-menu-right-content">
+                            <div class="address-1">
+                                <p><div class="name">路人乙</div><div class="moren">默认</div></p>
+                                <div class="news-1">
+                                    <div class="pwz" id="add2-name"><div class="pw">收货人：</div>路人甲</div></p>
+                                    <div class="pwz" id="add2-addresss"><div class="pw">所在地址：</div>广西柳州市城中区</div>
+                                    <div class="pwz" id="add2-home"><div class="pw">详细地址：</div>广西科技大学南区宿舍</div>
+                                    <div class="pwz" id="add2-phon"><div class="pw">手机：</div>12****1234</div>
+                                    <div class="pwz" id="add2-call"><div class="pw">固定电话：</div>12****1234</div>
+                                    <div class="pwz" id="add2-emile"><div class="pw">邮箱：</div>12****1234@qq.com</div>
+                                    <div class="caozuo"><a class="bianji" href="#">编辑</a><a class="shanchu" href="#">删除</a>
+                                    </div>
+                                </div>
+                                <div class="address-2">
+                                    <p><div class="name2">路人乙</div></p>
+                                    <div class="news-2">
+                                        <div class="pwz" id="add2-name"><div class="pw">收货人：</div>路人甲</div>
+                                        <div class="pwz" id="add2-addresss"><div class="pw">所在地址：</div>广西柳州市城中区</div>
+                                        <div class="pwz" id="add2-home"><div class="pw">详细地址：</div>广西科技大学南区宿舍</div>
+                                        <div class="pwz" id="add2-phon"><div class="pw">手机：</div>12****1234</div>
+                                        <div class="pwz" id="add2-call"><div class="pw">固定电话：</div>12****1234</div>
+                                        <div class="pwz" id="add2-emile"><div class="pw">邮箱：</div>12****1234@qq.com</div>
+                                        <div class="caozuo"><a class="bianji" href="#">编辑</a><a class="shanchu" href="#">删除</a>
+                                        </div>
+                                    </div>
+                                    <div class="new-address" style="claer:both; margin-left:150px; margin-top:50px;" onclick="setTac(9)">
+                                        <input id="address-btn" value="新增收货地址" type="submit" name="button">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">
+                        <div class="modifying-data-head"><h3>修改资料</h3></div>
+                        <div class="modifying-data-content">
+                            <ul>
+                                <li><span class="front_input">用户名：</span><input id="name" type="text" class="_input"/></li>
+                                <li class="sex-li"><span class="front_input">性别：</span>
+                                    <div class="sex-dv" id="sex-man-dv"><input class="sex-man" type="radio" checked="checked" name="sex"/>男</div>
+                                    <div class="sex-dv" id="sex-woman-dv"><input class="sex-woman" type="radio" name="sex"/>女</div>
+                                    <div class="sex-dv" id="sex-con-dv"><input class="sex-confidential" type="radio" name="sex"/>保密</div>
+                                </li>
+                                <li class="age-li"><span class="front_input">生日：</span>
+                                    <form name="reg_testdate">
+                                        <select class="age-year" name="year" onchange="yearDD(this.value)">
+                                            <option value="">请选择 年</option>
+                                        </select>
+                                        <select class="age-month" name="month" onchange="monthDD(this.value)">
+                                            <option value="">选择 月</option>
+                                        </select>
+                                        <select class="age-day" name="day">
+                                            <option value="">选择 日</option>
+                                        </select>
+                                    </form>
+                                </li>
+                                <li class="address-li" id="address-id">
+                                    <span class="front_input">居住地：</span>
+                                    <form name="frm">
+                                        <select id="s1"><option>省份</option></select>
+                                        <select id="s2"><option>地级市</option></select>
+                                        <select id="s3"><option>市、县级市、县</option></select>
+                                    </form>
+                                </li>
+                                <li class="tishi-li">
+                                    <span class="tishi-sp">
+                                        <div class="tishi-dv">*修改登录密码，邮箱，手机，请到</div>
+                                        <div class="tishi-dv" id="zhanghu-dv-id">“账户安全”</div>
+                                        <div class="tishi-dv">修改</div>
+                                    </span>
+                                </li>
+                                <li class="anniu-li">
+                                    <div class="confirmation-dv" onclick="setTac(0)">确认修改</div>
+                                    <div class="back" onclick="setTac(0)">返回</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">
+                        <div class="modifying-head"><h3>修改密码</h3></div>
+                        <div class="modifying-content">
+                            <ul>
+                                <li>
+                                    <span class="pass_input">原密码：</span>
+                                    <input id="oldpass" type="password" class="_input" onblur="check_oldpass()"/>
+                                    <span id="oldpass_error" class="after_input"></span>
+                                </li>
+                                <li>
+                                    <span class="pass_input">新密码：</span>
+                                    <input id="pass" type="password" class="_input" onblur="check_pass()"/>
+                                    <span id="pass_error" class="after_input"></span>
+                                </li>
+                                <li>
+                                    <span class="pass_input">再次输入：</span>
+                                    <input id="rpass" type="password" class="_input" onblur="check_rpass()"/>
+                                    <span id="rpass_error" class="after_input"></span>
+                                </li>
+                                <li class="pass-li" id="pass-liid">
+                                    <div class="confirmation-dv" onclick="setTac(3)">确认修改</div>
+                                    <div class="back" onclick="setTac(3)">返回</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">
+                        <div class="modifying-head"><h3>修改邮箱</h3></div>
+                        <div class="modifying-content">
+                            <ul>
+                                <li>
+                                    <span class="mail_input">已验证邮箱：</span>
+                                    <div class="mail-dv">123****123@qq.com</div>
+                                </li>
+                                <li>
+                                    <span class="mail_input">当前密码：</span>
+                                    <input id="oldpass" type="password" class="_input" onblur="check_oldpass()"/>
+                                    <span id="oldpass_error" class="mail_span"></span>
+                                    <div class="oldpass-z">密码不正确</div>
+                                </li>
+                                <li>
+                                    <span class="mail_input">新输入邮箱：</span>
+                                    <input id="mail" type="text" class="_input"  onFocus="javascript: clear_mb()" onblur="mail()"/>
+                                    <span id="imail_error" class="after_input"></span>
+                                </li>
+                                <li>
+                                    <span class="mail_input">验证码:</span>
+                                    <input type="text" id="input1" class="note"/>
+                                    <input id="note-button" value="获取验证码" type="submit" name="button">
+                                        <div class="button-yes"></div>
+                                </li>
+                                <li class="mail-li" id="mail-liid">
+                                    <div class="confirmation-dv" onclick="setTac(3)">确认修改</div>
+                                    <div class="back" onclick="setTac(3)">返回</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">
+                        <div class="modifying-head"><h3>修改手机</h3></div>
+                        <div class="modifying-content">
+                            <ul>
+                                <li>
+                                    <span class="mail_input">已验证手机：</span>
+                                    <div class="mail-dv" id="mod-phon">123****123</div>
+                                </li>
+                                <li>
+                                    <span class="mail_input">当前密码：</span>
+                                    <input id="oldpass" type="password" class="_input" onblur="check_oldpass()"/>
+                                    <span id="oldpass_error" class="mail_span"></span>
+                                    <div class="oldpass-z">密码不正确</div>
+                                </li>
+                                <li>
+                                    <span class="mail_input">输入新手机：</span>
+                                    <input id="phone" type="text" class="_input" onblur="phone()"/>
+                                    <span id="iphone_error" class="after_input"></span>
+                                </li>
+                                <li>
+                                    <span class="mail_input">验证码:</span>
+                                    <input type="text" id="input1" class="note"/>
+                                    <input id="note-button" value="获取验证码" type="submit" name="button">
+                                    <div class="button-yes"></div>
+                                </li>
+                                <li class="mail-li" id="mail-liid">
+                                    <div class="confirmation-dv" onclick="setTac(3)">确认修改</div>
+                                    <div class="back" onclick="setTac(3)">返回</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                    <ul class="block" style="display: none">
+                        <div class="content-menu-right-head"><h3>新增收货地址</h3></div>
+                        <div class="content-menu-right-content">
+                            <ul>
+                                <li>
+                                    <span class="mail_input">收货人：</span>
+                                    <input id="phone" type="text" class="_input" onblur="phone()"/>
+                                    <span id="iphone_error" class="after_input"></span>
+                                </li>
+                                <li>
+                                    <span class="mail_input">手机：</span>
+                                    <input id="phone" type="text" class="_input" onblur="phone()"/>
+                                    <span id="iphone_error" class="after_input"></span>
+                                </li>
+                                <li class="address-li" id="address-li-id">
+                                    <span class="front_input">居住地：</span>
+                                    <form name="frma">
+                                        <select id="d1"><option>省份</option></select>
+                                        <select id="d2"><option>地级市</option></select>
+                                        <select id="d3"><option>市、县级市、县</option></select>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="foot-cont">
+                    <div class="foot-logo"></div>
+                    <div class="foot-mid">COPYRIGHT © 2006-2015 LANRENIUKU.COM ALL RIGHIS RESER-</div>
+                    <div class="foot-dow">VED.POWERED BY DEDECMS_V57</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

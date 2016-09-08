@@ -1,0 +1,246 @@
+/** 
+	* link: 
+	* @author: 赖钊桂
+	* date: 2016-4-11
+*/
+
+.maContent {
+	width:860px;
+	height:790px;
+	margin:0 auto;
+	margin-top: 50px;
+	//background:#DEB887;
+	position: relative;
+  left: 0px;
+  top: 0px;
+}
+.maCleft {
+	width: 18%;
+	height: 790px;
+	//background: #DEB887;
+	float: left;
+}
+.maCright {
+	width: 75%;
+	height: 790px;
+	//background: #5F9EA0;
+	float: left;
+	display: none;
+	position: absolute;
+  left: 25%;
+  top: 0px;
+}
+.maCleft-top,.maCright-top {
+	width: 100%;
+	height: 35px;
+	//background: #BDB76B;
+	text-align: center;
+	font-size:20px;
+	padding-top: 15px;
+}
+.maCleft-top {
+	border-bottom: 1px solid #bfbfbf;
+	margin-bottom: 15px;
+}
+.maCright-top ul li{
+	color: #c1bfbf;
+	padding-top: 11px;
+	padding-bottom: 2px;
+	//height: 31px;
+	font-size:16px; 
+	border-bottom: 1px solid #bfbfbf;
+}
+.maCleft-bottom {
+	font-size: 15px;
+}
+.maCleft-bottom ul{
+	width: 100%;
+	height: 50px;	
+	text-align: center;
+	line-height: 50px;
+	margin-top: 1px;
+}
+.on,.maCleft-bottom ul:hover {
+	color: #ffffff;
+  font-size: 20px;
+	background: #d9272c;
+	cursor: pointer;
+}
+.maCright-top ul li{
+	width: 110px;
+	float: left;
+}
+
+/*==============================右边下面的公共的内容CSS===========================================*/
+.maCright-bottom li:first-child,.maCright-top ul li:first-child{
+	width: 310px;
+	white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+	position: relative;
+  left: 0px;
+  top: 0px;
+}
+.maCright-bottom li:first-child img {
+	width: 80px;
+	height: 80px;
+	float: left;
+	padding: 5px;
+	margin-right: 12px;
+	margin-top: 5px;
+}
+.maCright-bottom li:first-child span {
+	display: block;
+  width: 205px;
+	font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+	position: absolute;
+  left: 100px;
+  top: -12px;
+}
+.maCright-bottom li:first-child p {
+	font-size: 11px;
+	position: absolute;
+  left: 140px;
+  top: 15px;
+}
+.maCright-bottom ul {
+	width: 644px;
+	height: 98px;
+	color: #c1bfbf;
+	//background: #F0E68C;
+	border: 1px solid #e5e4e4;
+	margin-top: 30px;
+	box-shadow: 3px 4px 2px #e0e0e0;
+}
+.maCright-bottom ul li {
+	width: 110px;
+	height: 98px;
+	float: left;
+	line-height: 98px;
+	text-align: center;
+	white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+	//background: #FF8C00;
+	margin-left: 1px;
+}
+.maCright-bottom ul li:hover{
+	color: #fff;
+	background: #54dbe0;
+	cursor: pointer;
+}
+.maCright-bottom a {
+	color: #c1bfbf;
+	text-decoration: none;
+}
+#maCright1 {
+	display: block;
+}
+#maCright2 .maCright-top li:last-child,#maCright2 .maCright-bottom li:last-child {
+	width: 221px;
+}
+#maCright2 .maCright-bottom li:last-child:hover {
+	background: #fff;
+}
+#maCright2 .maCright-bottom li:last-child a{
+	width: 83px;
+	display: block;
+	float: left;
+	margin-left: 12px;
+	text-decoration: none;
+	color: #c1bfbf;
+}
+#maCright2 .maCright-bottom li:last-child a:hover {
+	color: #d9272c;
+}
+#maCright3 {
+	width: 80%;
+	padding-top: 55px;
+	position: absolute;
+  left: 20%;
+  top: 0px;
+}
+.maCright3-chlid {
+	width: 28%;
+	height: 230px;
+	color: #aaa;
+	//background: #00FA9A;
+	float: left;
+	margin: 0px 0px 50px 5%;
+	box-shadow: 3px 4px 4px #b6b6b6;
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+.maCright3-chlid-top,.maCright3-chlid-bottom {
+	color: #fff;
+	width: 194px;
+	height: 84px;
+	display: none;
+	border: 0px;
+	font-size: 17px;
+	font-weight: bold;
+	background-color:rgba(0,0,0,0.2);
+	position: absolute;
+	left: -1px;
+	top: 0px;
+}
+.maCright3-chlid-bottom {
+	position: absolute;
+	left: -1px;
+	top: 85px;
+}
+.maCright3-chlid:hover input{
+	display: block;
+}
+.maCright3-chlid a {
+	text-decoration: none;
+}
+#maCright3-bottomBt {
+	margin-left: 200px;
+}
+.maCright3-chlid p {
+	color: #aaa;
+	white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+	font-size: 12px;
+	margin-left: 8px;
+}
+.maCright3-chlid span {
+	color: #d9272c;
+}
+.maCright3-chlid tt {
+	text-decoration:line-through;
+	font-family: "microsoft yahei";
+	font-size: 11px;
+	color: #aaa;
+}
+/*====================按钮的内容CSS=======================*/
+.maCright-bottomBt {
+	width: 250px;
+	height: 50px;
+	//background: #20B2AA;
+	padding: 30px 0px 0px 0px;
+	margin: 0 auto;
+	clear: both;
+}
+.maCright-bottomBt input {
+	border: 0px;
+	width: 60px;
+	height: 25px;
+	font-size: 13px;
+	margin-left: 30px;
+}
+.maCright-bottomBt #MA-page1 {
+	margin-left: 20px;
+	color: #d9272c;
+}
+.maCright-bottomBt input:hover {
+	color: #fff;
+	cursor: pointer;
+	background: #d9272c;
+}

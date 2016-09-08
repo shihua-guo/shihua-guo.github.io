@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* CSS Document */
+
+.content-menu-right-security-content{
+  width: 700px;
+  height: 500px;
+  float: left;
+}
+.security-content{
+  width: 100%;
+  height: 23px;
+  float: left;
+  margin: 50px 0px 30px 0px;
+}
+.security-png{
+  width: 23px;
+  height: 23px;
+  float: left;
+  margin: 0px 20px 0px 0px;
+}
+#loginpass-png{
+  background: url(../images/security-yes.png);
+}
+#bindingmailbox-png{
+  background: url(../images/security-no.png);
+}
+#bindingphon-png{
+  background: url(../images/security-yes.png);
+}
+.security-content1{
+  width: 650px;
+  height: 23px;
+  float: left;
+  line-height: 23px;
+}
+.security-theme{
+  width:100px;
+  float: left;
+  color: #bcbcbc;
+  border-right:1px solid #bcbcbc;
+}
+.security-cont{
+  margin-left: 30px;
+  color: #bcbcbc;
+  float: left;
+  font-size: 12px;
+}
+.security-xiugai{
+  float: right;
+  color: #6b93c1;
+  font-size: 12px;
+}
+#loginpass-cont{
+  color: #d9272c;
+}
+/*修改邮箱*/
+.modifying-head{
+  float: left;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #bfbfbf;
+}
+.modifying-content{
+	width: 100%;
+	height: 500px;
+	float: left;
+	margin-top: 30px;
+}
+.modifying-content ul li{
+	width: 650px;
+	float: left;
+	margin-bottom: 30px;
+}
+.mail_input{
+	float: left;
+	width: 100px;
+	color: #858585;
+	margin-right: 30px;
+	line-height: 45px;
+	text-align: right;
+}
+.mail-dv{
+	float: left;
+	line-height: 45px;
+	color: #acacac;
+}
+#input1{
+	float: left;
+	height: 45px;
+	border: 1px solid rgb(204, 204, 204);
+	width: 200px;
+	float: left;
+}
+#note-button{
+	width: 120px;
+	height: 45px;
+	margin-left: 40px;
+	background:#e03a3a;
+	border-radius: 3px;
+	color: #ffffff;
+	float: left;
+	cursor: pointer;
+	font-size: 15px;
+}
+#note-button:hover{
+	background: #f82e54;
+	font-size: 16px;
+}
+#mail-liid{
+	margin-top: 40px;
+}
+
+/*修改密码*/
+
+.pass_input{
+	float: left;
+	width: 100px;
+	margin-right: 25px;
+	line-height: 45px;
+	text-align: right;
+}
+.pass-li{
+	margin-top: 30px;
+}
+.after_input,.oldpass-z{
+	float: left;
+	width: 175px;
+	height: 23px;
+	font-size: 12px;
+	margin: 13px;
+	color: #ff5858;
+}
+
+
