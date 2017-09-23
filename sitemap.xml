@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/09/23/hello-world/</loc>
+    <loc>http://haojen.github.io/2017/09/23/hello-world/</loc>
     
-    <lastmod>2017-09-23T14:50:02.205Z</lastmod>
+    <lastmod>2017-09-23T15:32:22.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haojen.github.io/2017/09/23/java-developer-kit/</loc>
+    
+    <lastmod>2017-09-23T15:29:44.754Z</lastmod>
     
   </url>
   
