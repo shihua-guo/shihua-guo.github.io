@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜Alan&#39;s blog
+        Alan&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://haojen.github.io/2017/09/23/hello-world/">
+    <link rel="canonical" href="http://haojen.github.io/2017/11/13/StateofVue/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,12 +145,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1></h1>
                     
                     <span class="meta">
                          作者 Alan
                         <span>
-                          日期 2017-09-23
+                          日期 2017-11-13
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -162,7 +162,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            
         </span>
     </div>
 </header>
@@ -173,26 +173,21 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                <hr>
+<p>title: 用状态驱动应用<br>date: 2017-10-28 23:27:08</p>
+<h2 id="tags-vue"><a href="#tags-vue" class="headerlink" title="tags: vue "></a>tags: vue </h2><h2 id="状态的必要性"><a href="#状态的必要性" class="headerlink" title="状态的必要性"></a>状态的必要性</h2><hr>
+<p>当组件A逐渐变得庞大，需要从组件A中抽取模块变成组件B，或者需要引入更多的组件时，如果通过props来进行组件之间的通信，那么会变得困难，特别是需要依赖更多其他组件的属性时，而且此时，组件间的耦合度会变大，而且对于通信内容都是单向的（通过on可以实现双向，但是比较麻烦）。这时候，组件间的通信都使用状态来管理，那么可以降低耦合度，而且能够响应，并实时更新视图。</p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/09/23/java-developer-kit/" data-toggle="tooltip" data-placement="top"
-                           title="Java开发者常用工具">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2017/11/13/nexus/" data-toggle="tooltip" data-placement="top"
+                           title="使用nexus建立个人npm库">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -213,7 +208,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-vue"><span class="toc-text">tags: vue </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态的必要性"><span class="toc-text">状态的必要性</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -253,8 +248,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "alan9uo";
-    var disqus_identifier = "http://haojen.github.io/2017/09/23/hello-world/";
-    var disqus_url = "http://haojen.github.io/2017/09/23/hello-world/";
+    var disqus_identifier = "http://haojen.github.io/2017/11/13/StateofVue/";
+    var disqus_url = "http://haojen.github.io/2017/11/13/StateofVue/";
 
     (function () {
         var dsq = document.createElement('script');
@@ -376,7 +371,7 @@
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--wechat title img-->
-<img class="wechat-title-img" src="">
+<img class="wechat-title-img" src="avatar-hux.jpg">
 </body>
 
 </html>

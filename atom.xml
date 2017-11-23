@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://haojen.github.io/"/>
-  <updated>2017-09-26T13:01:31.142Z</updated>
+  <updated>2017-11-23T15:05:04.520Z</updated>
   <id>http://haojen.github.io/</id>
   
   <author>
@@ -17,13 +17,74 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>java-developer-kit</title>
+    <title>使用nexus建立个人npm库</title>
+    <link href="http://haojen.github.io/2017/11/13/nexus/"/>
+    <id>http://haojen.github.io/2017/11/13/nexus/</id>
+    <published>2017-11-13T15:05:04.000Z</published>
+    <updated>2017-11-23T15:05:04.520Z</updated>
+    
+    <content type="html"><![CDATA[<p>下面分享一下如何使用nexus建立自己的npm仓库</p><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><hr><ul><li>java环境</li><li>node环境</li><li><a href="https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-win64.zip" target="_blank" rel="external">nexus安装包 3.6.0</a></li></ul><h2 id="运行nexus"><a href="#运行nexus" class="headerlink" title="运行nexus"></a><strong>运行nexus</strong></h2><hr><p>进入解压后nexus的bin文件夹，在此目录打开cmd <strong>（使用gitbash执行可能会有问题）</strong>。执行<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">nexus /run</div></pre></td></tr></table></figure></p><p>默认端口为：<a href="http://localhost:8081/" target="_blank" rel="external">8081</a>，打开可以看到nexus界面了。</p><blockquote><p>点击右上角可以登录，默认账号密码：admin  admin123</p></blockquote><p><img src="http://owrfhrwdi.bkt.clouddn.com/W4UKA3OGE%5DNO%5D%60NBDQ5%60DVQ.png" alt="运行成功的图片"></p><blockquote><p>“箱子”图标就是代表着<strong>仓库中的包</strong>，”齿轮”图标则为<strong>设置</strong>，下面我们进入<strong>设置</strong></p></blockquote><p><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171114001115.png" alt="界面"></p><blockquote><p>之后，我们将关注<strong>“Repository”</strong>和<strong>“Security”</strong>栏目。分别用于<strong>创建/管理仓库和用户</strong></p></blockquote><h2 id="创建npm需要的Blob存储（此步骤可以忽略）"><a href="#创建npm需要的Blob存储（此步骤可以忽略）" class="headerlink" title="创建npm需要的Blob存储（此步骤可以忽略）"></a>创建npm需要的Blob存储（此步骤可以忽略）</h2><ul><li>分别创建name为”npm-proxy”,”npm-hosted”,”npm-group”的存储（分别用于存放npm代理下载的依赖包、发布的私有依赖包、代理下载的和私有的组合的依赖包）。</li></ul><p><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171123001119.png" alt="创建存储1"></p><p><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171123001258.png" alt="创建存储2"></p><h2 id="创建npm仓库"><a href="#创建npm仓库" class="headerlink" title="创建npm仓库"></a>创建npm仓库</h2><hr><ul><li>点击<strong>“Create Repository”</strong><br><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171114001556.png" alt="Create Repository"></li><li>nexus增加了许多仓库类型，下面我们只关注和<strong>npm</strong>相关的<br><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171114001609.png" alt="仓库类型"></li></ul><h3 id="下面说下这几种类型的区别"><a href="#下面说下这几种类型的区别" class="headerlink" title="下面说下这几种类型的区别"></a>下面说下这几种类型的区别</h3><ul><li><strong>hosted</strong> 为私有的仓库，我们在本地写好的npm插件就是发布到这个地方的。这个就是我们搭建私有仓库的目的。</li><li><strong>proxy</strong> 为代理的镜像地址（我们一般设置为淘宝镜像即可），大概可以理解为，nexus帮我们从这个地址下载其他的npm依赖包。而且会自动缓存到nexus仓库。</li><li><strong>group</strong> 用于私有仓库和代理仓库的组合。就是我们可以从<strong>group</strong>下载到私有的依赖（存放在nexus仓库的）和npm官网的依赖。<blockquote><p>需要注意的是，<strong>hosted</strong>仅用于发布你的私有依赖，所以，如果你从<strong>hosted</strong>下载依赖是无法下载的。下载只能通过<strong>group</strong>下载。</p></blockquote></li></ul><h3 id="下面开始建立仓库"><a href="#下面开始建立仓库" class="headerlink" title="下面开始建立仓库"></a>下面开始建立仓库</h3><ol><li><p>创建代理仓库（npm-proxy）<br><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171123001544.png" alt="代理仓库"></p><blockquote><ul><li>name为<strong>“npm-proxy”</strong></li><li>remote storage为<strong>“<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a>“</strong></li><li>存储为<strong>“npm-proxy”</strong></li></ul></blockquote></li><li><p>创建私有仓库（npm-hosted）<br><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171123001613.png" alt="私有类型"></p><blockquote><ul><li>name为<strong>“npm-hosted”</strong></li><li>存储为<strong>“npm-hosted”</strong></li></ul></blockquote></li><li><p>创建组个仓库（npm-group）<br><img src="http://owrfhrwdi.bkt.clouddn.com/TIM%E5%9B%BE%E7%89%8720171123001749.png" alt="私有类型"></p><blockquote><ul><li>name为<strong>“npm-group”</strong></li><li>存储为<strong>“npm-group”</strong></li><li>然后在group中，把前面2个创建的拖到右边框中</li></ul></blockquote></li></ol><p>以上，仓库已经创建完成。可以通过界面进入仓库，查看刚刚创建的仓库。也可以直接访问，如果出现404，则说明name写错咯。地址和name对应的</p><ul><li><a href="http://localhost:8081/repository/npm-proxy/" target="_blank" rel="external">http://localhost:8081/repository/npm-proxy/</a></li><li><a href="http://localhost:8081/repository/npm-hosted/" target="_blank" rel="external">http://localhost:8081/repository/npm-hosted/</a></li><li><a href="http://localhost:8081/repository/npm-group/" target="_blank" rel="external">http://localhost:8081/repository/npm-group/</a></li></ul><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><blockquote><p>之后我们发布需要这个用户登录</p></blockquote><p><img src="http://owrfhrwdi.bkt.clouddn.com/U4WTM%25W%7BSWM68C3IFF%7DF%60QP.png" alt="创建用户"><br>同时把<strong>npm Bearer Token Realm</strong>置于active<br><img src="http://owrfhrwdi.bkt.clouddn.com/M_6BNS%60OHOFCU_HSUURX%28W0.png" alt="创建用户"></p><h2 id="测试下载依赖包"><a href="#测试下载依赖包" class="headerlink" title="测试下载依赖包"></a>测试下载依赖包</h2><ol><li><p>切换npm的registry。可以运行一下命令。记住是<strong>npm-group</strong> 这个地址。</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm config set registry http://localhost:8081/repository/npm-group/</div></pre></td></tr></table></figure><p>同样的，我们也可以打开一下这个文件修改设置</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">C:\Users\你的用户名\.npmrc</div></pre></td></tr></table></figure><p>推荐设置（<strong>可以解决phantomjs、chromedriver、node-sass无法下载的问题</strong>）。直接把一下拷贝进.npmrc文件即可</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">loglevel=info</div><div class="line">scripts-prepend-node-path=true</div><div class="line">registry=http://localhost:8081/repository/npm-group/</div><div class="line">chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</div><div class="line">phantomjs_cdnurl=http://cnpmjs.org/downloads</div><div class="line">sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</div></pre></td></tr></table></figure></li><li><p>设置完之后，我们可以随便下载一个依赖，看是否是经过nexus下载的。</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm install -g generator-vuejs</div></pre></td></tr></table></figure><p>可以看到的确是走npm-group仓库的。<br><img src="http://owrfhrwdi.bkt.clouddn.com/VZWA5%25L9U2%250X%29I$1%7BV%5DHSL.png" alt="测试"><br>这时候去nexus库查看，可以看到，nexus把从淘宝下载的镜像都缓存在本地了。<br><img src="http://owrfhrwdi.bkt.clouddn.com/4RVO~K5PROHTXU%7B$125@_YE.png" alt="缓存"></p></li></ol><h2 id="测试发布"><a href="#测试发布" class="headerlink" title="测试发布"></a>测试发布</h2><ol><li><p>切换成<strong>npm-hosted</strong> 的地址</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm config set registry http://localhost:8081/repository/npm-hosted</div></pre></td></tr></table></figure></li><li><p>登录，运行以下命令，然后输入刚刚创建的用户名和密码即可</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm adduser</div></pre></td></tr></table></figure><p><img src="http://owrfhrwdi.bkt.clouddn.com/TSK0$V7J3H_F_L6LBO32YLL.png" alt="登录"></p></li><li><p>找一个需要发布的依赖，在根目录运行以下命令，设置registry为npm-hosted，并发布</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure><p>200即为发布成功<br><img src="http://owrfhrwdi.bkt.clouddn.com/MUYXX3X%5B9JMD4F$~EM4P%28$1.png" alt="登录"><br>去nexus仓库可以看到刚刚发布的依赖包<br><img src="http://owrfhrwdi.bkt.clouddn.com/N%5DT%29Q4$%7B%5DZ0%28WF%28%25OE%7BR%257U.png" alt="登录"></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;下面分享一下如何使用nexus建立自己的npm仓库&lt;/p&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;java环境&lt;/li&gt;
+&lt;li&gt;no
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>用状态驱动应用</title>
+    <link href="http://haojen.github.io/2017/10/28/state-of-vue/"/>
+    <id>http://haojen.github.io/2017/10/28/state-of-vue/</id>
+    <published>2017-10-28T15:27:08.000Z</published>
+    <updated>2017-11-13T15:13:56.295Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="状态的必要性"><a href="#状态的必要性" class="headerlink" title="状态的必要性"></a>状态的必要性</h2><hr><p>当组件A逐渐变得庞大，需要从组件A中抽取模块变成组件B，或者需要引入更多的组件时，如果通过props来进行组件之间的通信，那么会变得困难，特别是需要依赖更多其他组件的属性时，而且此时，组件间的耦合度会变大，而且对于通信内容都是单向的（通过on可以实现双向，但是比较麻烦）。这时候，组件间的通信都使用状态来管理，那么可以降低耦合度，而且能够响应，并实时更新视图。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;状态的必要性&quot;&gt;&lt;a href=&quot;#状态的必要性&quot; class=&quot;headerlink&quot; title=&quot;状态的必要性&quot;&gt;&lt;/a&gt;状态的必要性&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;当组件A逐渐变得庞大，需要从组件A中抽取模块变成组件B，或者需要引入更多的组件时，如果通过prop
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用vue开发如何解决跨域以及验证问题</title>
+    <link href="http://haojen.github.io/2017/09/29/CROS/"/>
+    <id>http://haojen.github.io/2017/09/29/CROS/</id>
+    <published>2017-09-29T15:29:11.000Z</published>
+    <updated>2017-11-13T15:09:43.287Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发者常用工具</title>
     <link href="http://haojen.github.io/2017/09/23/java-developer-kit/"/>
     <id>http://haojen.github.io/2017/09/23/java-developer-kit/</id>
     <published>2017-09-23T15:29:44.000Z</published>
-    <updated>2017-09-26T13:01:31.142Z</updated>
+    <updated>2017-11-13T15:16:53.430Z</updated>
     
-    <content type="html"><![CDATA[<p>重装系统是一件非常麻烦的事情，特别是继续再次搭建环境，每次需要用到的时候才会想到：“oh！我需要这个工具！”。下面给大家汇总一下一个java程序员所需要的一些工具，以备不时之需：</p><h2 id="环境篇"><a href="#环境篇" class="headerlink" title="环境篇"></a>环境篇</h2><h3 id="Java环境"><a href="#Java环境" class="headerlink" title="Java环境"></a>Java环境</h3><p>官网地址，截止2017年9月25日 最新的版本(登录后下载)：<br><a href="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase5-419410.html" target="_blank" rel="external">jdk-5u22</a><br><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html" target="_blank" rel="external">jdk-6u45</a><br><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html" target="_blank" rel="external">jdk-7u80</a><br><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">jdk-8u144</a></p><p>为了方便使用windows的程序员快速切换各个版本的JDK，JDK6~8的exe都做成了zip并上传到百度云，这个可以直接修改环境变量就可以快速切换了：<br><a href="https://pan.baidu.com/s/1pKItryr" target="_blank" rel="external">百度云地址</a><br>提取密码：shvy</p>]]></content>
+    <content type="html"><![CDATA[<p>重装系统是一件非常麻烦的事情，特别是继续再次搭建环境，每次需要用到的时候才会想到：“oh！我需要这个工具！”。下面给大家汇总一下一个java程序员所需要的一些工具，以备不时之需：</p><h2 id="环境篇"><a href="#环境篇" class="headerlink" title="环境篇"></a>环境篇</h2><hr><h3 id="Java环境"><a href="#Java环境" class="headerlink" title="Java环境"></a>Java环境</h3><p>官网地址，截止2017年9月25日 最新的版本(登录后下载)：</p><ul><li><a href="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase5-419410.html" target="_blank" rel="external">jdk-5u22</a></li><li><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html" target="_blank" rel="external">jdk-6u45</a></li><li><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html" target="_blank" rel="external">jdk-7u80</a></li><li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">jdk-8u144</a></li></ul><p>为了方便使用windows的程序员快速切换各个版本的JDK，JDK6~8的exe都做成了zip并上传到百度云，这个可以直接修改环境变量就可以快速切换了：<br><a href="https://pan.baidu.com/s/1pKItryr" target="_blank" rel="external">百度云地址</a><br>提取密码：shvy</p><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><p>包含以下版本</p><ul><li>tomcat-7.0.82</li><li>tomcat-8.5.23</li><li>tomcat-9.0.1(beta)</li></ul><p><a href="https://pan.baidu.com/s/1pKJaXXT" target="_blank" rel="external">百度云地址</a><br>提取密码：m3d3</p>]]></content>
     
     <summary type="html">
     
@@ -43,7 +104,7 @@
     <link href="http://haojen.github.io/2017/09/23/hello-world/"/>
     <id>http://haojen.github.io/2017/09/23/hello-world/</id>
     <published>2017-09-23T14:50:02.205Z</published>
-    <updated>2017-09-23T15:32:22.548Z</updated>
+    <updated>2017-09-24T16:16:58.403Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
     
