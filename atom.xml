@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Alan&#39;s Blog</title>
+  <title>Alan</title>
   <icon>https://www.gravatar.com/avatar/61f9dbc3b48f389230fb9e02443ed31c</icon>
   
   <link href="/atom.xml" rel="self"/>
