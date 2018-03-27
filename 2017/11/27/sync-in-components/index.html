@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Java开发者常用工具｜Alan&#39;s blog
+        2个组件之间实现同步Vue｜Alan&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://haojen.github.io/2017/09/23/java-developer-kit/">
+    <link rel="canonical" href="http://haojen.github.io/2017/11/27/sync-in-components/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,12 +145,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Java开发者常用工具</h1>
+                    <h1>2个组件之间实现同步Vue</h1>
                     
                     <span class="meta">
                          作者 Alan
                         <span>
-                          日期 2017-09-23
+                          日期 2017-11-27
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -162,7 +162,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Java开发者常用工具
+            2个组件之间实现同步Vue
         </span>
     </div>
 </header>
@@ -173,23 +173,9 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>重装系统是一件非常麻烦的事情，特别是继续再次搭建环境，每次需要用到的时候才会想到：“oh！我需要这个工具！”。下面给大家汇总一下一个java程序员所需要的一些工具，以备不时之需：</p>
-<h2 id="环境篇"><a href="#环境篇" class="headerlink" title="环境篇"></a>环境篇</h2><hr>
-<h3 id="Java环境"><a href="#Java环境" class="headerlink" title="Java环境"></a>Java环境</h3><p>官网地址，截止2017年9月25日 最新的版本(登录后下载)：</p>
-<ul>
-<li><a href="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase5-419410.html" target="_blank" rel="external">jdk-5u22</a></li>
-<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html" target="_blank" rel="external">jdk-6u45</a></li>
-<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html" target="_blank" rel="external">jdk-7u80</a></li>
-<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">jdk-8u144</a></li>
-</ul>
-<p>为了方便使用windows的程序员快速切换各个版本的JDK，JDK6~8的exe都做成了zip并上传到百度云，这个可以直接修改环境变量就可以快速切换了：<br><a href="https://pan.baidu.com/s/1pKItryr" target="_blank" rel="external">百度云地址</a><br>提取密码：shvy</p>
-<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><p>包含以下版本</p>
-<ul>
-<li>tomcat-7.0.82</li>
-<li>tomcat-8.5.23</li>
-<li>tomcat-9.0.1(beta)</li>
-</ul>
-<p><a href="https://pan.baidu.com/s/1pKJaXXT" target="_blank" rel="external">百度云地址</a><br>提取密码：m3d3</p>
+                <p>需求：<strong>组件1</strong>为<strong>组件2</strong>的子组件，<strong>组件1</strong>的A方法需要与<strong>组件2</strong>的B方法同步。<br>使用<strong>$emit</strong>进行通知。在<strong>组件1</strong>中调用<strong>save</strong>方法前，需要接受<strong>组件2</strong>的<strong>beforeSave</strong>方法传回的参数。<br>可以在<strong>组件1</strong>中使用创建<strong>beforeSave</strong>通知组件2执行<strong>beforeSave</strong>方法，然后当<strong>组件2</strong>执行完<strong>beforeSave</strong>之后回调，再使用$emit通知子组件执行<strong>save</strong>方法</p>
+<p>####组件2中的组件1，<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;component :ref=&quot;id&quot; @beforeSave=&quot;beforeSave&quot;&gt; &lt;component&gt;</div><div class="line">methods:&#123;</div><div class="line">    beforeSave(&#123;entity,formName,isClear&#125;)&#123;</div><div class="line">        axios.get(&apos;/api/getForeignKey&apos;).then(function(resp)&#123;</div><div class="line">            let foreignKey = resp.data.foreignKey</div><div class="line">            this.$refs[&apos;id&apos;].$emit(&apos;save&apos;,foreignKey);</div><div class="line">        &#125;).catch(function(error)&#123;</div><div class="line">            console.log(error)</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>####组件1通知组件2<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">beforeSave(entity,formName,isClear)&#123;</div><div class="line">    this.$emit(&apos;beforeSave&apos;,&#123;entity,formName,isClear&#125;)</div><div class="line">&#125;,</div><div class="line">save(foreignKey)&#123;</div><div class="line">    console.log(foreignKey)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
                 <hr>
                 
@@ -197,14 +183,14 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/09/29/CROS/" data-toggle="tooltip" data-placement="top"
-                           title="使用vue开发如何解决跨域以及验证问题">&larr; Previous Post</a>
+                        <a href="/2018/03/22/vue状态的不同引用方式引发表单验证/" data-toggle="tooltip" data-placement="top"
+                           title="vue状态的不同引用方式引发表单验证">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2017/09/23/hello-world/" data-toggle="tooltip" data-placement="top"
-                           title="Hello World">Next Post &rarr;</a>
+                        <a href="/2017/11/13/nexus/" data-toggle="tooltip" data-placement="top"
+                           title="使用nexus建立个人npm库">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -226,7 +212,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境篇"><span class="toc-text">环境篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java环境"><span class="toc-text">Java环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tomcat"><span class="toc-text">Tomcat</span></a></li></ol></li></ol>
+                    
                 </div>
             </div>
         </div>
@@ -266,8 +252,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "alan9uo";
-    var disqus_identifier = "http://haojen.github.io/2017/09/23/java-developer-kit/";
-    var disqus_url = "http://haojen.github.io/2017/09/23/java-developer-kit/";
+    var disqus_identifier = "http://haojen.github.io/2017/11/27/sync-in-components/";
+    var disqus_url = "http://haojen.github.io/2017/11/27/sync-in-components/";
 
     (function () {
         var dsq = document.createElement('script');

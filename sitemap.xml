@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://haojen.github.io/2018/03/26/functional-programming/</loc>
+    
+    <lastmod>2018-03-26T16:15:23.131Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haojen.github.io/2018/03/22/%E4%BD%BF%E7%94%A8%E4%B8%83%E7%89%9Bchrome%E6%8F%92%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</loc>
+    
+    <lastmod>2018-03-26T14:00:20.690Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haojen.github.io/2018/03/22/vue%E7%8A%B6%E6%80%81%E7%9A%84%E4%B8%8D%E5%90%8C%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F%E5%BC%95%E5%8F%91%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/</loc>
+    
+    <lastmod>2018-03-22T15:15:32.395Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haojen.github.io/2017/11/27/sync-in-components/</loc>
+    
+    <lastmod>2018-01-15T14:21:18.317Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haojen.github.io/2017/11/13/nexus/</loc>
     
     <lastmod>2017-11-23T15:05:04.520Z</lastmod>
@@ -39,7 +67,7 @@
   <url>
     <loc>http://haojen.github.io/Tags/index.html</loc>
     
-    <lastmod>2017-09-24T01:40:16.840Z</lastmod>
+    <lastmod>2017-09-24T01:40:16.841Z</lastmod>
     
   </url>
   
