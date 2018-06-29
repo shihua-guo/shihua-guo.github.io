@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="alan&#39;s blog">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Alan" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        arcgis绘制功能｜Alan&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://haojen.github.io/2018/06/28/arcgis-draw/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/header/1.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Alan
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/header/2.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/header/2.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>arcgis绘制功能</h1>
+                    
+                    <span class="meta">
+                         作者 Alan
+                        <span>
+                          日期 2018-06-28
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            arcgis绘制功能
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="arcgis绘制功能"><a href="#arcgis绘制功能" class="headerlink" title="arcgis绘制功能"></a>arcgis绘制功能</h2><blockquote>
+<p>基于api 3.24</p>
+</blockquote>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近需要做一个地图小工具（测距、侧面积、缓冲区分析）的需求。客户说只要arcgis自带的工具就可以了。然而，项目的图层比较复杂，而且arcgis自带的工具几乎不能定制，所以我并有考虑直接使用自带的工具。所以我的思路如下：</p>
+<ol>
+<li>使用arcgis javascript api 的Draw工具（ <a href="https://developers.arcgis.com/javascript/3/jsapi/draw-amd.html" target="_blank" rel="external"><strong>esri/toolbars/draw</strong> </a>），主要功能是绘制出点线面。</li>
+<li>然后再计算绘制出来的图形，这里需要使用geometryEngine（ <a href="https://developers.arcgis.com/javascript/3/jsapi/esri.geometry.geometryengine-amd.html" target="_blank" rel="external"><strong>esri/geometry/geometryEngine</strong></a> 3.13才添加的新工具 ），主要功能是计算对应的图形长度面积等。这里也可以使用arcgis server里面的服务来代替。</li>
+</ol>
+<p>下面说下实现的步骤：</p>
+<ul>
+<li><p>使用Draw工具绘制图形（<a href="https://developers.arcgis.com/javascript/3/jssamples/#search/Draw" target="_blank" rel="external">官网实例代码</a>）。</p>
+<blockquote>
+<p>new出draw工具—&gt;定义绘制完成的回调函数—&gt;在对应地方添加触发绘制的事件</p>
+</blockquote>
+<ol>
+<li><p>引入对应的draw <strong>esri/toolbars/draw</strong> ，定义draw工具</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> draw = <span class="keyword">new</span> Draw(map);</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义绘制完成的回调函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> draw = <span class="keyword">new</span> Draw(map);</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">  on(type: "draw-complete", listener: (event: &#123; geometry: Geometry; target: Draw &#125;) =&gt; void): esri.Handle;</span></div><div class="line"><span class="comment">  回调函数的参数有：绘制完成图形的对应的地理信息：geometry，以及整个draw对象。</span></div><div class="line"><span class="comment"> */</span></div><div class="line">draw.on(<span class="string">"draw-complete"</span>,endDraw)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">endDraw</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">  <span class="comment">//逻辑处理</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在对应的dom触发对应的图形绘制，下面举例绘制点的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> draw = <span class="keyword">new</span> Draw(map);</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">  on(type: "draw-complete", listener: (event: &#123; geometry: Geometry; target: Draw &#125;) =&gt; void): esri.Handle;</span></div><div class="line"><span class="comment">  回调函数的参数有：绘制完成图形的对应的地理信息：geometry，以及整个draw对象。</span></div><div class="line"><span class="comment"> */</span></div><div class="line">draw.on(<span class="string">"draw-complete"</span>,endDraw)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">endDraw</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">  <span class="comment">//逻辑处理</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ptDom = <span class="built_in">document</span>.getElementById(<span class="string">"ptDom"</span>)</div><div class="line">ptDom.addEventListener(<span class="string">"click"</span>, drawPoint, <span class="literal">false</span>); </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawPoint</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.draw.activate(Draw.POINT);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面分别是开启绘制对应图形的代码，以及取消绘制，可以在对应的dom事件添加：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawCircle</span>(<span class="params"></span>)</span>&#123;<span class="comment">//绘制圆</span></div><div class="line">  <span class="keyword">this</span>.draw.activate(Draw.CIRCLE);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawPolygon</span>(<span class="params"></span>)</span>&#123;<span class="comment">//绘制多边形</span></div><div class="line">  <span class="keyword">this</span>.draw.activate(Draw.POLYGON);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawPolyline</span>(<span class="params"></span>)</span>&#123;<span class="comment">//绘制线</span></div><div class="line">  <span class="keyword">this</span>.draw.activate(Draw.POLYLINE);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">endDraw</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.draw.deactivate();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>测距、测面积的工具实现。引入工具geometryEngine <strong>esri/geometry/geometryEngine</strong>工具，这里需要在绘制完成的回调参数里面判断绘制的图形类型，然后再做对应处理。下面关注 <strong>endDraw</strong> 函数即可。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">endDraw</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">  <span class="comment">//逻辑处理</span></div><div class="line">  <span class="keyword">var</span> result = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">switch</span> (event.geometry.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"point"</span>:</div><div class="line">        </div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">"polyline"</span>:</div><div class="line">      <span class="comment">//使用geodesicLength计算长度</span></div><div class="line">      result = GeometryEngine.geodesicLength(event.geometry,<span class="string">"kilometers"</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">"polygon"</span>:</div><div class="line">      <span class="comment">//使用geodesicArea计算面积</span></div><div class="line">      result = GeometryEngine.geodesicArea(event.geometry,<span class="string">"kilometers"</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line"></div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面就能得到你需要的结果，然后再你想要的地方显示出来就可以了。</p>
+</li>
+<li><p>缓冲区分析工具实现。我们继续在回调函数 <strong>endDraw</strong> 处理。缓冲区分析，主要就是在绘制的范围内，筛选出该范围内的图形。主要是针对各种图层服务来做对应的处理。下面主要介绍：FeatureServer、以及featureCollection构建的FeatureLayer图层。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">...</div><div class="line"><span class="keyword">var</span> layer <span class="comment">//这里是你的各种图层</span></div><div class="line">...</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">endDraw</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">  <span class="keyword">switch</span> (event.geometry.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"polygon"</span>:</div><div class="line">    <span class="comment">//只有是多边形的才进行处理</span></div><div class="line">      <span class="keyword">switch</span> (layer.type) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="string">"Feature Layer"</span>:</div><div class="line">              <span class="keyword">if</span>(layer.url)&#123;<span class="comment">//如果是基于arcgis server的服务的FeatureLayer</span></div><div class="line">                <span class="comment">/* 引入"esri/tasks/query"，可以直接调用服务的查询，非常方便 */</span></div><div class="line">                <span class="keyword">var</span> query = <span class="keyword">new</span> Query();</div><div class="line">                query.geometry = event.geometry;</div><div class="line">                query.outFields = [<span class="string">"OBJECTID"</span>];</div><div class="line">                <span class="keyword">var</span> queryTask = <span class="keyword">new</span> QueryTask(layer.layer.url);</div><div class="line">                <span class="keyword">var</span></div><div class="line">                queryTask.execute(query, (results: any) =&gt; &#123;</div><div class="line">                  <span class="comment">//results就是在绘制范围内的要素。</span></div><div class="line">                &#125;);</div><div class="line">              &#125;<span class="keyword">else</span>&#123;<span class="comment">//如果是基于featureCollection构建的FeatureLayer</span></div><div class="line"></div><div class="line">              &#125;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">default</span>:</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line"></div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/06/27/arcgis-export/" data-toggle="tooltip" data-placement="top"
+                           title="arcgis导出">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+
+                <!--加入新的评论系统-->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#arcgis绘制功能"><span class="toc-text">arcgis绘制功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "alan9uo";
+    var disqus_identifier = "http://haojen.github.io/2018/06/28/arcgis-draw/";
+    var disqus_url = "http://haojen.github.io/2018/06/28/arcgis-draw/";
+
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/shihua-guo">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alan 2018
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://haojen.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/header/0.jpg">
+</body>
+
+</html>

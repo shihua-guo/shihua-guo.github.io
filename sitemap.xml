@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://haojen.github.io/2018/06/28/arcgis-draw/</loc>
+    
+    <lastmod>2018-06-29T09:41:45.672Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haojen.github.io/2018/06/27/arcgis-export/</loc>
     
-    <lastmod>2018-06-28T08:12:52.901Z</lastmod>
+    <lastmod>2018-06-29T00:56:18.509Z</lastmod>
     
   </url>
   
@@ -30,7 +37,7 @@
   </url>
   
   <url>
-    <loc>http://haojen.github.io/2017/11/13/nexus/</loc>
+    <loc>http://haojen.github.io/Tags/index.html</loc>
     
     <lastmod>2018-06-27T11:22:47.968Z</lastmod>
     
@@ -65,7 +72,7 @@
   </url>
   
   <url>
-    <loc>http://haojen.github.io/Tags/index.html</loc>
+    <loc>http://haojen.github.io/2017/11/13/nexus/</loc>
     
     <lastmod>2018-06-27T11:22:47.968Z</lastmod>
     
