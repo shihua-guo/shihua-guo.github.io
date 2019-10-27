@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="alan&#39;s blog">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Alan" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        functional programming｜Alan&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://haojen.github.io/2018/03/26/functional-programming/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/img/header/1.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Alan
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/img/header/2.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/img/header/2.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>functional programming</h1>
+                    
+                    <span class="meta">
+                         作者 Alan
+                        <span>
+                          日期 2018-03-26
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            functional programming
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="Functional-Programming"><a href="#Functional-Programming" class="headerlink" title="Functional Programming"></a>Functional Programming</h1><blockquote>
+<p>仅仅是一篇观后感</p>
+</blockquote>
+<p>最近在我违反了 <strong>no mutation</strong> ，既在一个函数里面修改了传入的变量。导致我在另外一个地方使用该变量的时候，并不知道它已经发生了变化。然后，我突然想起了好几个月前看得一个演讲:<a href="https://www.youtube.com/watch?v=e-5obm1G_FY" target="_blank" rel="external">Anjana Vakil: Learning Functional Programming with JavaScript - JSUnconf 2016</a>。这里面就有讲什么是 <strong>Functional Programming</strong>。我发现，在JS中，遵循了下面几条原则，可以更好的复用、维护代码。</p>
+<blockquote>
+<p>在平时写业务的过程中设计模式是谈不上了，但是Functional Programming恰处处可见。</p>
+</blockquote>
+<h3 id="What-is-Functional-Programming"><a href="#What-is-Functional-Programming" class="headerlink" title="What is Functional Programming?"></a>What is Functional Programming?</h3><p>什么是Functional Programming<br>A programming paradigm.<br>一种编程的范式。就像<strong>面向过程</strong>、<strong>面向对象</strong>（狗.吃(屎)）。总的来说，<strong>Function is King</strong></p>
+<blockquote>
+<p>如果说<strong>面向过程</strong>就类似于（吃(狗,屎)）、<strong>面向对象</strong>类似于（狗.吃(屎)），那么Functional Programming可以初略概括为：狗.吃(屎) -&gt; 屎，因为只有input和output才算是一个合格的function。</p>
+</blockquote>
+<p>A code style.<br>一种代码的风格。如何去组织你的代码。</p>
+<p>A mindset.<br>一种思维模式。该使用什么样的方式去解决你的问题？就像你不想去破解一个代码块完整性（内聚），那么你可以加入一个切面，去影响该代码块的执行结果。</p>
+<p>A sexy, buzz-wordy trend.</p>
+<h3 id="Why-Functional-Javascript"><a href="#Why-Functional-Javascript" class="headerlink" title="Why Functional Javascript?"></a>Why Functional Javascript?</h3><p>Object-oriented in javascript gets tricky.<br>因为在JavaScript中，面向对象往往纠缠不清。就比如this.貌似真的很多时候，this的指向会变化多端。</p>
+<p>Safer, easier to debug/maintain.</p>
+<p>Established community.</p>
+<h3 id="How-Functional-Programming-in-Javascript"><a href="#How-Functional-Programming-in-Javascript" class="headerlink" title="How Functional Programming in Javascript?"></a>How Functional Programming in Javascript?</h3><p>Do everything in function.<br>非常简单，就是一个input-&gt;output的过程。你只需要简单的把input交给一个function处理，然后它会给你需要的output。就像一种数据的流向。有以下的</p>
+<h6 id="以下是非Functional的形式（A）："><a href="#以下是非Functional的形式（A）：" class="headerlink" title="以下是非Functional的形式（A）："></a>以下是非Functional的形式（A）：</h6><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var name = &quot;Alan&quot;;</div><div class="line">var greeting = &quot;Hi,I&apos;m &quot;;</div><div class="line">console.log(greeting+name);</div><div class="line">=&gt; &quot;Hi,I&apos;m Alan&quot;</div></pre></td></tr></table></figure>
+<h6 id="以下是Functional的形式（B）："><a href="#以下是Functional的形式（B）：" class="headerlink" title="以下是Functional的形式（B）："></a>以下是Functional的形式（B）：</h6><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">function greet(name)&#123;</div><div class="line">  return &quot;Hi,I&apos;m &quot;+name;</div><div class="line">&#125;</div><div class="line">greet(&quot;alan&quot;);</div><div class="line">=&gt; &quot;Hi,I&apos;m Alan&quot;</div></pre></td></tr></table></figure>
+<p>例子A中，处理形式就是定义完greet，然后定义name，然后一起输出。而例子B，是将name交给一个greet函数处理，它会返回拼接一个greet然后返回给你。</p>
+<p>Use pure function.<br>在Functional Programming中，我们会遇到一个问题：function a中，改变了input的内容，然后你在其他的function b中使用该input的时候，发现它已经被改变，然后也许function b中的执行结果会因为function a中改变了input而改变。这个就是文章开头提及的情况。这时候，你可能会绞尽脑汁，究竟在哪里改变了它。所以，纯净的function是不应该去改变input的。你应该在一个function里面拿了input，然后只读取input然后计算output，然后把output返回。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var name = &quot;alan&quot;;</div><div class="line">function greet()&#123;</div><div class="line">  name = &quot;jade&quot;;</div><div class="line">  return &quot;Hi,I&apos;m &quot;+name;</div><div class="line">&#125;</div><div class="line">function sayMyName(name)&#123;</div><div class="line">  return &quot;Hi,I&apos;m &quot;+name;</div><div class="line">&#125;</div><div class="line">greet();</div><div class="line">sayMyName(name);</div></pre></td></tr></table></figure></p>
+<p>同样，以下也不是纯净的function<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var name = &quot;alan&quot;;</div><div class="line">function greet()&#123;</div><div class="line">  console.log(&quot;Hi,I&apos;m &quot;+name);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>并没有input,直接使用了全局的变量。而且并没有返回计算的结果，我们需要的是function帮我们计算并返回结果，打印并不是function需要做的事情。正确做法应该如下,function唯一需要做的就是使用input去计算得出我们需要的output，并将output返回：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var name = &quot;alan&quot;;</div><div class="line">function greet(name)&#123;</div><div class="line">  return &quot;Hi,I&apos;m &quot;+name;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/06/27/arcgis-export/" data-toggle="tooltip" data-placement="top"
+                           title="arcgis导出">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/03/22/使用七牛chrome插件上传图片/" data-toggle="tooltip" data-placement="top"
+                           title="使用七牛chrome插件上传图片">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+
+                <!--加入新的评论系统-->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Functional-Programming"><span class="toc-text">Functional Programming</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Functional-Programming"><span class="toc-text">What is Functional Programming?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-Functional-Javascript"><span class="toc-text">Why Functional Javascript?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-Functional-Programming-in-Javascript"><span class="toc-text">How Functional Programming in Javascript?</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#以下是非Functional的形式（A）："><span class="toc-text">以下是非Functional的形式（A）：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#以下是Functional的形式（B）："><span class="toc-text">以下是Functional的形式（B）：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "alan9uo";
+    var disqus_identifier = "http://haojen.github.io/2018/03/26/functional-programming/";
+    var disqus_url = "http://haojen.github.io/2018/03/26/functional-programming/";
+
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/shihua-guo">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alan 2018
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://haojen.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/img/header/0.jpg">
+</body>
+
+</html>
