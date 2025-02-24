@@ -41,11 +41,11 @@
 <meta property="og:title" content="【vue】2个组件之间实现同步Vue">
 <meta property="og:url" content="http://example.com/2017/11/27/sync-in-components/index.html">
 <meta property="og:site_name" content="shihua-guo&#39;s blog">
-<meta property="og:description" content="需求：组件1为组件2的子组件，组件1的A方法需要与组件2的B方法同步。使用**$emit进行通知。在组件1中调用save方法前，需要接受组件2的beforeSave方法传回的参数。可以在组件1中使用创建beforeSave通知组件2执行beforeSave方法，然后当组件2执行完beforeSave之后回调，再使用$emit通知子组件执行save**方法####组件2中的组件1， 12345678">
+<meta property="og:description" content="需求：组件1为组件2的子组件，组件1的A方法需要与组件2的B方法同步。使用**$emit进行通知。在组件1中调用save方法前，需要接受组件2的beforeSave方法传回的参数。可以在组件1中使用创建beforeSave通知组件2执行beforeSave方法，然后当组件2执行完beforeSave之后回调，再使用$emit通知子组件执行save**方法 组件2中的组件1，123456789101">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2017-11-27T15:05:40.000Z">
-<meta property="article:modified_time" content="2025-02-19T13:46:01.758Z">
+<meta property="article:modified_time" content="2025-02-24T12:44:57.391Z">
 <meta property="article:author" content="shihua-guo">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -2077,7 +2077,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1740400463006),
+    lastupdate: new Date(1740401579611),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2491,10 +2491,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>需求：<strong>组件1</strong>为<strong>组件2</strong>的子组件，<strong>组件1</strong>的A方法需要与<strong>组件2</strong>的B方法同步。<br>使用**$emit<strong>进行通知。在</strong>组件1<strong>中调用</strong>save<strong>方法前，需要接受</strong>组件2<strong>的</strong>beforeSave<strong>方法传回的参数。<br>可以在</strong>组件1<strong>中使用创建</strong>beforeSave<strong>通知组件2执行</strong>beforeSave<strong>方法，然后当</strong>组件2<strong>执行完</strong>beforeSave<strong>之后回调，再使用$emit通知子组件执行</strong>save**方法<br>####组件2中的组件1，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;component :ref=&quot;id&quot; @beforeSave=&quot;beforeSave&quot;&gt; &lt;component&gt;</span><br><span class="line">methods:&#123;</span><br><span class="line">    beforeSave(&#123;entity,formName,isClear&#125;)&#123;</span><br><span class="line">        axios.get(&#x27;/api/getForeignKey&#x27;).then(function(resp)&#123;</span><br><span class="line">            let foreignKey = resp.data.foreignKey</span><br><span class="line">            this.$refs[&#x27;id&#x27;].$emit(&#x27;save&#x27;,foreignKey);</span><br><span class="line">        &#125;).catch(function(error)&#123;</span><br><span class="line">            console.log(error)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>####组件1通知组件2</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">beforeSave(entity,formName,isClear)&#123;</span><br><span class="line">    this.$emit(&#x27;beforeSave&#x27;,&#123;entity,formName,isClear&#125;)</span><br><span class="line">&#125;,</span><br><span class="line">save(foreignKey)&#123;</span><br><span class="line">    console.log(foreignKey)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <p>需求：<strong>组件1</strong>为<strong>组件2</strong>的子组件，<strong>组件1</strong>的A方法需要与<strong>组件2</strong>的B方法同步。<br>使用**$emit<strong>进行通知。在</strong>组件1<strong>中调用</strong>save<strong>方法前，需要接受</strong>组件2<strong>的</strong>beforeSave<strong>方法传回的参数。<br>可以在</strong>组件1<strong>中使用创建</strong>beforeSave<strong>通知组件2执行</strong>beforeSave<strong>方法，然后当</strong>组件2<strong>执行完</strong>beforeSave<strong>之后回调，再使用$emit通知子组件执行</strong>save**方法</p>
+<h4 id="组件2中的组件1，"><a href="#组件2中的组件1，" class="headerlink" title="组件2中的组件1，"></a>组件2中的组件1，</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;component :ref=&quot;id&quot; @beforeSave=&quot;beforeSave&quot;&gt; &lt;component&gt;</span><br><span class="line">methods:&#123;</span><br><span class="line">    beforeSave(&#123;entity,formName,isClear&#125;)&#123;</span><br><span class="line">        axios.get(&#x27;/api/getForeignKey&#x27;).then(function(resp)&#123;</span><br><span class="line">            let foreignKey = resp.data.foreignKey</span><br><span class="line">            this.$refs[&#x27;id&#x27;].$emit(&#x27;save&#x27;,foreignKey);</span><br><span class="line">        &#125;).catch(function(error)&#123;</span><br><span class="line">            console.log(error)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="组件1通知组件2"><a href="#组件1通知组件2" class="headerlink" title="组件1通知组件2"></a>组件1通知组件2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">beforeSave(entity,formName,isClear)&#123;</span><br><span class="line">    this.$emit(&#x27;beforeSave&#x27;,&#123;entity,formName,isClear&#125;)</span><br><span class="line">&#125;,</span><br><span class="line">save(foreignKey)&#123;</span><br><span class="line">    console.log(foreignKey)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   </div>
   
@@ -2519,10 +2518,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-02-19T21:46:01+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-02-24T20:44:57+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 19, 2025</p>
+    <p>更新于：Feb 24, 2025</p>
   </a>
 </div>
 
@@ -2669,6 +2668,20 @@ nexus安装包 3.6.0
   
   
 
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B62%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B61%EF%BC%8C"><span class="toc-text">组件2中的组件1，</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B61%E9%80%9A%E7%9F%A5%E7%BB%84%E4%BB%B62"><span class="toc-text">组件1通知组件2</span></a></li></ol>
+  </div>
+</section>
 
   
 
@@ -3160,7 +3173,7 @@ nexus安装包 3.6.0
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"shihua-guo's blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"shihua-guo","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"java 后端 前端 感想"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"shihua-guo's blog"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/前端/","name":"前端"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2017/11/27/sync-in-components/","name":"【vue】2个组件之间实现同步Vue"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"shihua-guo's blog","url":"http://example.com/","keywords":null,"description":"java 后端 前端 感想","author":{"@type":"Person","name":"shihua-guo","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"java 后端 前端 感想"},"publisher":{"@type":"Organization","name":"shihua-guo's blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"【vue】2个组件之间实现同步Vue","description":"java 后端 前端 感想","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2017/11/27/sync-in-components/"},"author":{"@type":"Person","name":"shihua-guo","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"shihua-guo's blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2017/11/27/sync-in-components/","wordCount":0,"datePublished":"2017-11-27T15:05:40.000Z","dateModified":"2025-02-19T13:46:01.758Z","articleSection":"前端","keywords":"vue","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"shihua-guo's blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"shihua-guo","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"java 后端 前端 感想"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"shihua-guo's blog"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/前端/","name":"前端"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2017/11/27/sync-in-components/","name":"【vue】2个组件之间实现同步Vue"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"shihua-guo's blog","url":"http://example.com/","keywords":null,"description":"java 后端 前端 感想","author":{"@type":"Person","name":"shihua-guo","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"java 后端 前端 感想"},"publisher":{"@type":"Organization","name":"shihua-guo's blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"【vue】2个组件之间实现同步Vue","description":"java 后端 前端 感想","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2017/11/27/sync-in-components/"},"author":{"@type":"Person","name":"shihua-guo","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"shihua-guo's blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2017/11/27/sync-in-components/","wordCount":0,"datePublished":"2017-11-27T15:05:40.000Z","dateModified":"2025-02-24T12:44:57.391Z","articleSection":"前端","keywords":"vue","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
