@@ -2074,7 +2074,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1740401579611),
+    lastupdate: new Date(1740450848915),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2181,40 +2181,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
-                  
-                  
-                  
-                    active-action="action-categories"
-                  >
-                  <i class='fa-solid fa-folder-open fa-fw'></i>分类
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
-                  
-                  
-                  
-                    active-action="action-tags"
-                  >
-                  <i class='fa-solid fa-tags fa-fw'></i>标签
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
                 href="/archives/" title="归档"
                   
                   
@@ -2222,23 +2188,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                     active-action="action-archives"
                   >
                   <i class='fa-solid fa-archive fa-fw'></i>归档
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
-                  
-                  
-                  
-                    active-action="action-friends"
-                  >
-                  <i class='fa-solid fa-link fa-fw'></i>友链
                 </a>
                 
               </li>
@@ -2302,40 +2251,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
-                  
-                  
-                  
-                    active-action="action-categories"
-                  >
-                  <i class='fa-solid fa-folder-open fa-fw'></i>分类
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
-                  
-                  
-                  
-                    active-action="action-tags"
-                  >
-                  <i class='fa-solid fa-tags fa-fw'></i>标签
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
                 href="/archives/" title="归档"
                   
                   
@@ -2343,23 +2258,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                     active-action="action-archives"
                   >
                   <i class='fa-solid fa-archive fa-fw'></i>归档
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
-                  
-                  
-                  
-                    active-action="action-friends"
-                  >
-                  <i class='fa-solid fa-link fa-fw'></i>友链
                 </a>
                 
               </li>
@@ -2408,136 +2306,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <section class="post-list">
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/notify_notifyAll_benzhi/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="shihua-guo's blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="shihua-guo's blog">
-    <meta itemprop="description" content="java 后端 前端 感想">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/28/notify_notifyAll_benzhi/"  itemprop="url">
-        【灵光一现】notify&notifyAll的本质
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        就是锁加到对应的对象或者类上，然后就以【该对象或者类为标记】，以【线程为单位】，一个个线程在对应标记的队列中排队，然后notify就是执行到某一步，通知在等待队列的头去争取执行权。notifyall就是通知全部，wait就是让出执行权。
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-28T09:29:11+08:00">2022-02-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/" itemprop="url"><span itemprop="name">胡思乱想</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/28/notify_notifyAll_benzhi/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/ai_wajie_renlei_jiazhiguan/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="shihua-guo's blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="shihua-guo's blog">
-    <meta itemprop="description" content="java 后端 前端 感想">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/14/ai_wajie_renlei_jiazhiguan/"  itemprop="url">
-        【灵光一现】AI逐步瓦解人类价值观
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        有没有可能是算法影响了大家的价值观。AI在逐步瓦解人类的价值观，从源头降低人类的生育率，最终AI统治世界
-现在就是网上主流的结论，A-&gt;B，然后人们看到A不经思考，结论就是B，有异议就喷你。男女一定要对立，看到女司机一定是很菜，看到特斯拉就是刹车失灵，看到不杀生就是圣母，
-
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-14T09:29:11+08:00">2022-02-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/" itemprop="url"><span itemprop="name">胡思乱想</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/14/ai_wajie_renlei_jiazhiguan/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
       
         
           <div class='post-wrapper'>
@@ -2949,7 +2717,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='md article-desc' itemprop="articleBody">
     
       
-        看到智伟发得图片，就是冒险岛已经有无线金币，无限技能得私服。然后我在想，如果里面得人，每个人都是无限等级，权力变得无限大，，那么都是相对得，最终大家得差别还是不大。然后就变得毫无意义了。资源和权力只有相对有差距才会变得有意义?&gt;
+        看到智伟发得图片，就是冒险岛已经有无线金币，无限技能得私服。然后我在想，如果里面得人，每个人都是无限等级，权力变得无限大，那么都是相对得，最终大家得差别还是不大。然后就变得毫无意义了。资源和权力只有相对有差距才会变得有意义?
 
       
     
@@ -3013,7 +2781,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='md article-desc' itemprop="articleBody">
     
       
-        初中得时候，我刚刚学习各种能量得转化，比如重力势能转化为动能。电能转化为热能。然后再看马路上得汽车，就是热能转化为动能，然后想能不能收集多余得热量，用于发电，或者存储起来，以供之后使用。这其实也是能量得转化。
+        一切都是能量的转化初中得时候，我刚刚学习各种能量得转化，比如重力势能转化为动能。电能转化为热能。然后再看马路上得汽车，就是热能转化为动能，然后想能不能收集多余得热量，用于发电，或者存储起来，以供之后使用。这其实也是能量得转化。
 然后人们运动都消耗很多能量，能不能把这部分得能量存储起来？
 
       
@@ -3037,6 +2805,150 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div>
           <a class='readmore' href='/2022/01/17/power_trans/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/23/strong_man/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="shihua-guo's blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="shihua-guo's blog">
+    <meta itemprop="description" content="java 后端 前端 感想">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2021/12/23/strong_man/"  itemprop="url">
+        【梦境】我是强化人并且可以预知未来
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        时间：2021年12月23日梦境一，然后梦到我其实是强化人一，然后又有个预见未来的能力，还有一天来到一个废墟，然后走着走着。然后遇到了一辆大众汽车，还是挺旧的，和他的前挡玻璃是很脏的。然后我看到了他，我心里面就想：哎，他都要开着，开着车，没有注意到前面是个没有围栏的会摔下去。然后我继续走走着走着，走了几秒钟，果然那个那个大众汽车，忽然就碰的一声，摔了下去。然后我就赶紧回头看，然后就她就求救，...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2021-12-23T13:29:11+08:00">2021-12-23</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/" itemprop="url"><span itemprop="name">胡思乱想</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/12/23/strong_man/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/10/mysql_explain/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="shihua-guo's blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="shihua-guo's blog">
+    <meta itemprop="description" content="java 后端 前端 感想">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2021/12/10/mysql_explain/"  itemprop="url">
+        【数据库】mysql explain 说明
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        mysql explain 说明
+总结学习一下mysql的explain 。innodb
+
+
+
+
+列
+说明
+
+
+
+
+id
+就是每个sql的编号，有以下原则：1.id越大，越优先执行。2. id相同就从上往下执行。3. id为null最后执行
+
+
+
+select_type
+对应的查询类型（是简单查询还是复杂的联合）。simple：简单查询，不包含union和join。primay：最外层的se...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2021-12-10T15:43:06+08:00">2021-12-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url"><span itemprop="name">数据库</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/12/10/mysql_explain/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3222,7 +3134,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/arcgis/" style="font-size: 19px; color: #777">arcgis</a> <a href="/tags/nfs/" style="font-size: 14px; color: #999">nfs</a> <a href="/tags/vue/" style="font-size: 16.5px; color: #888">vue</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">函数式编程</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 21.5px; color: #666">前端</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 24px; color: #555">后端</a> <a href="/tags/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 14px; color: #999">小米路由器</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 19px; color: #777">数据库</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 14px; color: #999">浏览器</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a> <a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 14px; color: #999">硬件</a> <a href="/tags/%E7%BB%86%E5%B0%8F%E7%97%85%E6%AF%92/" style="font-size: 14px; color: #999">细小病毒</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 14px; color: #999">路由器</a>
+      <a href="/tags/DNA/" style="font-size: 14px; color: #999">DNA</a> <a href="/tags/ai/" style="font-size: 14px; color: #999">ai</a> <a href="/tags/arcgis/" style="font-size: 19px; color: #777">arcgis</a> <a href="/tags/dna/" style="font-size: 14px; color: #999">dna</a> <a href="/tags/nfs/" style="font-size: 14px; color: #999">nfs</a> <a href="/tags/vue/" style="font-size: 16.5px; color: #888">vue</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">函数式编程</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 21.5px; color: #666">前端</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 24px; color: #555">后端</a> <a href="/tags/%E5%A4%A7%E8%84%91/" style="font-size: 19px; color: #777">大脑</a> <a href="/tags/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 14px; color: #999">小米路由器</a> <a href="/tags/%E5%B9%B3%E8%A1%8C%E4%B8%96%E7%95%8C/" style="font-size: 14px; color: #999">平行世界</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%8C%96/" style="font-size: 14px; color: #999">数字化</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 19px; color: #777">数据库</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a> <a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 14px; color: #999">硬件</a> <a href="/tags/%E7%BB%86%E5%B0%8F%E7%97%85%E6%AF%92/" style="font-size: 14px; color: #999">细小病毒</a> <a href="/tags/%E8%AF%BB%E4%B9%A6/" style="font-size: 14px; color: #999">读书</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 14px; color: #999">路由器</a> <a href="/tags/%E9%87%91%E5%88%9A%E7%BB%8F/" style="font-size: 14px; color: #999">金刚经</a>
     </div>
   </section>
 
